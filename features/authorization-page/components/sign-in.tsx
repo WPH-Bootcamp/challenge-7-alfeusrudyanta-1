@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLogin } from '../hooks/use-login';
 import { FloatingLabelInput } from './floating-label-input';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -13,15 +13,19 @@ import type { LoginFormErrors } from '@/features/authorization-page/types';
 const SignIn = () => {
   const router = useRouter();
 
-  const [email, setEmail] = useState<string>(() => {
-    const savedEmail = Cookie.get('email');
-    return savedEmail ?? '';
-  });
+  const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [error, setError] = useState<LoginFormErrors>({});
 
   const { mutate, isPending } = useLogin();
+
+  useEffect(() => {
+    const savedEmail = Cookie.get('email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+    }
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
