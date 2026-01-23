@@ -1,6 +1,7 @@
 export type {
   PostLoginReq,
   PostLoginRes,
+  LoginFormErrors,
 } from '@/features/authorization-page/types/login';
 export type {
   PostRegisterReq,

@@ -1,40 +1,85 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLogin } from '../hooks/use-login';
 import { FloatingLabelInput } from './floating-label-input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { loginSchema } from '../schema/login-schema';
+import Cookie from 'js-cookie';
+import type { LoginFormErrors } from '@/features/authorization-page/types';
 
 const SignIn = () => {
   const router = useRouter();
 
-  const [email, setEmail] = useState<string>('');
+  const [email, setEmail] = useState<string>(() => {
+    const savedEmail = Cookie.get('email');
+    return savedEmail ?? '';
+  });
   const [password, setPassword] = useState<string>('');
   const [rememberMe, setRememberMe] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<LoginFormErrors>({});
 
   const { mutate, isPending } = useLogin();
 
-  const handleLogin = () => {
-    const data = {
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    /* Error Handling */
+    setError({});
+
+    const result = loginSchema.safeParse({
       email,
       password,
-    };
+    });
 
-    mutate(data, {
+    if (!result.success) {
+      const newError: LoginFormErrors = {};
+
+      result.error.issues.forEach((err) => {
+        const field = err.path[0] as keyof LoginFormErrors;
+        newError[field] = err.message;
+      });
+
+      setError(newError);
+      return;
+    }
+
+    /* Remember Me */
+    if (rememberMe) {
+      Cookie.set('email', email);
+    } else {
+      Cookie.remove('email');
+    }
+
+    /* Mutate */
+    mutate(result.data, {
       onSuccess: () => {
         router.push('/');
       },
       onError: () => {
-        setError('Invalid email or password');
+        setError({ general: 'Invalid email or password' });
       },
     });
   };
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if (error.email) {
+      setError((prev) => ({ ...prev, email: undefined }));
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+    if (error.password) {
+      setError((prev) => ({ ...prev, password: undefined }));
+    }
+  };
+
   return (
-    <div className='flex flex-col gap-4 md:gap-5'>
+    <form onSubmit={handleLogin} className='flex flex-col gap-4 md:gap-5'>
       <FloatingLabelInput
         label='Email'
         type='email'
@@ -42,7 +87,8 @@ const SignIn = () => {
         name='email'
         value={email}
         disabled={isPending}
-        onChange={(e) => setEmail(e.target.value)}
+        error={error.email}
+        onChange={handleEmailChange}
       />
 
       <FloatingLabelInput
@@ -52,7 +98,8 @@ const SignIn = () => {
         name='password'
         value={password}
         disabled={isPending}
-        onChange={(e) => setPassword(e.target.value)}
+        error={error.password}
+        onChange={handlePasswordChange}
       />
 
       {/* Remember Me */}
@@ -70,12 +117,20 @@ const SignIn = () => {
         Remember Me
       </label>
 
-      <span className='text-sm-semibold text-primary-100'>{error}</span>
+      {error.general && (
+        <span className='text-sm-semibold text-primary-100'>
+          {error.general}
+        </span>
+      )}
 
-      <Button onClick={handleLogin} disabled={isPending}>
-        Login
+      <Button type='submit' disabled={isPending}>
+        {isPending ? (
+          <div className='h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
+        ) : (
+          'Login'
+        )}
       </Button>
-    </div>
+    </form>
   );
 };
 

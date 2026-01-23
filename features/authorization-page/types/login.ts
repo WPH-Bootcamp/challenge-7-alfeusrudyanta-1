@@ -20,4 +20,10 @@ type PostLoginRes = {
   };
 };
 
-export type { PostLoginReq, PostLoginRes };
+type LoginFormErrors = {
+  email?: string;
+  password?: string;
+  general?: string;
+};
+
+export type { PostLoginReq, PostLoginRes, LoginFormErrors };
