@@ -24,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn(nunito.variable, 'antialiased')}>
-        <QueryClientWrapper>{children}</QueryClientWrapper>
+        <QueryClientWrapper>
+          <div className='flex min-h-screen flex-col'>{children}</div>
+        </QueryClientWrapper>
       </body>
     </html>
   );

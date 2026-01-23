@@ -5,7 +5,7 @@ export default function DefaultLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      {children}
+      <div className='grow'>{children}</div>
       <Footer />
     </>
   );
