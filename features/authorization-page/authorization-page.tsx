@@ -1,9 +1,32 @@
+'use client';
+
 import Image from 'next/image';
 import { TabsList, TabsTrigger, TabsContent, Tabs } from '@/components/ui/tabs';
 import { SignUp } from './components/sign-up';
 import { SignIn } from './components/sign-in';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const AuthorizationPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [activeTab, setActiveTab] = useState<string>('sign-in');
+
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'sign-in' || tab === 'sign-up') {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('tab', value);
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
+
   return (
     <section className='flex min-h-screen w-screen'>
       {/* Left */}
@@ -19,7 +42,7 @@ const AuthorizationPage = () => {
       </div>
 
       {/* Right */}
-      <div className='flex w-full items-center justify-center md:w-1/2'>
+      <div className='my-10 flex w-full items-center justify-center md:w-1/2'>
         <div className='mx-6 flex w-full max-w-93.5 flex-col gap-4 md:gap-5'>
           {/* Logo */}
           <div className='flex items-center gap-3 md:gap-3.75'>
@@ -48,7 +71,11 @@ const AuthorizationPage = () => {
           </div>
 
           {/* Tabs */}
-          <Tabs defaultValue='sign-in'>
+          <Tabs
+            defaultValue='sign-in'
+            value={activeTab}
+            onValueChange={handleTabChange}
+          >
             <TabsList>
               <TabsTrigger value='sign-in'>Sign In</TabsTrigger>
               <TabsTrigger value='sign-up'>Sign Up</TabsTrigger>

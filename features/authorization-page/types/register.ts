@@ -22,4 +22,12 @@ type PostRegisterRes = {
   };
 };
 
-export type { PostRegisterReq, PostRegisterRes };
+type RegisterFormErrors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  password?: string;
+  general?: string;
+};
+
+export type { PostRegisterReq, PostRegisterRes, RegisterFormErrors };

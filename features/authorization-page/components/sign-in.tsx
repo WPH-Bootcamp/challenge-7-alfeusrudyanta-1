@@ -79,7 +79,10 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className='flex flex-col gap-4 md:gap-5'>
+    <form
+      onSubmit={handleLogin}
+      className='flex flex-col gap-4 focus-within:ring-0 focus-within:outline-none md:gap-5'
+    >
       <FloatingLabelInput
         label='Email'
         type='email'

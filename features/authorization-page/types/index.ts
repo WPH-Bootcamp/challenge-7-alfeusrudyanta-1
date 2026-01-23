@@ -6,4 +6,5 @@ export type {
 export type {
   PostRegisterReq,
   PostRegisterRes,
+  RegisterFormErrors,
 } from '@/features/authorization-page/types/register';
