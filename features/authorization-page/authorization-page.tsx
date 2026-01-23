@@ -47,7 +47,7 @@ const AuthorizationPage = () => {
           {/* Logo */}
           <div className='flex items-center gap-3 md:gap-3.75'>
             <Image
-              src='/icons/logo.svg'
+              src='/icons/logo-red.svg'
               alt='Food Logo'
               loading='lazy'
               height={32}

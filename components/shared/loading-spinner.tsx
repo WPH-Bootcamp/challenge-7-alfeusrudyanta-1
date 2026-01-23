@@ -1,6 +1,17 @@
-const LoadingSpinner = () => {
+import { cn } from '@/lib/utils';
+
+type LoadingSpinnerProps = {
+  className?: string;
+};
+
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ className }) => {
   return (
-    <div className='h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
+    <div
+      className={cn(
+        'size-4 animate-spin rounded-full border-2 border-white border-t-transparent',
+        className
+      )}
+    />
   );
 };
 

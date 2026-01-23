@@ -54,6 +54,7 @@ const SignUp = () => {
       return;
     }
 
+    /* Mutate */
     mutate(result.data, {
       onSuccess: () => {
         router.push('/authorization?tab=sign-in');

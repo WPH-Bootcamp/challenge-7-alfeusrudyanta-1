@@ -110,7 +110,6 @@ const SignIn = () => {
         onChange={handlePasswordChange}
       />
 
-      {/* Remember Me */}
       <label
         htmlFor='rememberMe'
         className='md:text-md-medium text-sm-medium flex cursor-pointer items-center gap-2 text-neutral-950'
