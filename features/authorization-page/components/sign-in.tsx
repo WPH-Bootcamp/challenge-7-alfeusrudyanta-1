@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { loginSchema } from '../schema/login-schema';
 import Cookie from 'js-cookie';
 import type { LoginFormErrors } from '@/features/authorization-page/types';
+import { LoadingSpinner } from '@/components/shared/loading-spinner';
 
 const SignIn = () => {
   const router = useRouter();
@@ -131,11 +132,7 @@ const SignIn = () => {
       )}
 
       <Button type='submit' disabled={isPending}>
-        {isPending ? (
-          <div className='h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
-        ) : (
-          'Login'
-        )}
+        {isPending ? <LoadingSpinner /> : 'Login'}
       </Button>
     </form>
   );

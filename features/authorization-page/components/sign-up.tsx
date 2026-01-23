@@ -10,6 +10,7 @@ import { useRegister } from '../hooks/use-register';
 import type { RegisterFormErrors } from '@/features/authorization-page/types';
 import { registerSchema } from '../schema/register-schema';
 import { useRouter } from 'next/navigation';
+import { LoadingSpinner } from '@/components/shared/loading-spinner';
 
 const SignUp = () => {
   const router = useRouter();
@@ -167,11 +168,7 @@ const SignUp = () => {
       )}
 
       <Button type='submit' disabled={isPending}>
-        {isPending ? (
-          <div className='h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
-        ) : (
-          'Register'
-        )}
+        {isPending ? <LoadingSpinner /> : 'Register'}
       </Button>
     </form>
   );
