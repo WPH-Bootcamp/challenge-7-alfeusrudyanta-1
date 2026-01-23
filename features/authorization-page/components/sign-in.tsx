@@ -1,17 +1,37 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLogin } from '../hooks/use-login';
 import { FloatingLabelInput } from './floating-label-input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 const SignIn = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
-  const { isPending } = useLogin();
+  const { mutate, isPending } = useLogin();
+
+  const handleLogin = () => {
+    const data = {
+      email,
+      password,
+    };
+
+    mutate(data, {
+      onSuccess: () => {
+        router.push('/');
+      },
+      onError: () => {
+        setError('Invalid email or password');
+      },
+    });
+  };
 
   return (
     <div className='flex flex-col gap-4 md:gap-5'>
@@ -36,24 +56,25 @@ const SignIn = () => {
       />
 
       {/* Remember Me */}
-      <div className='flex items-center gap-2'>
+      <label
+        htmlFor='rememberMe'
+        className='md:text-md-medium text-sm-medium flex cursor-pointer items-center gap-2 text-neutral-950'
+      >
         <Checkbox
           id='rememberMe'
           name='rememberMe'
           checked={rememberMe}
           disabled={isPending}
-          onCheckedChange={() => setRememberMe(!rememberMe)}
+          onCheckedChange={(checked) => setRememberMe(checked === true)}
         />
+        Remember Me
+      </label>
 
-        <label
-          htmlFor='rememberMe'
-          className='md:text-md-medium text-sm-medium text-neutral-950'
-        >
-          Remember Me
-        </label>
-      </div>
+      <span className='text-sm-semibold text-primary-100'>{error}</span>
 
-      <Button>Login</Button>
+      <Button onClick={handleLogin} disabled={isPending}>
+        Login
+      </Button>
     </div>
   );
 };
