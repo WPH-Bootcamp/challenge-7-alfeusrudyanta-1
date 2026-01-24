@@ -15,6 +15,7 @@ const buttonVariants = cva(
       },
       size: {
         default: 'h-12 p-2 w-full',
+        rounded: 'size-9 md:size-10',
       },
     },
     defaultVariants: {

@@ -6,7 +6,12 @@ const Icon = () => {
     <div className='flex flex-col gap-4 md:gap-10'>
       <div className='flex flex-col gap-5.5'>
         <div className='flex items-center gap-3.75'>
-          <Image src='/icons/logo-red.svg' alt='logo' height={42} width={42} />
+          <Image
+            src='/icons/logo-red.svg'
+            alt='Foody Logo'
+            height={42}
+            width={42}
+          />
 
           <span className='display-md-extrabold text-white'>Foody</span>
         </div>

@@ -53,9 +53,9 @@ const SignIn = () => {
 
     /* Remember Me */
     if (rememberMe) {
-      Cookie.set('email', email);
+      Cookie.set('email', email, { sameSite: 'Strict', expires: 7, path: '/' });
     } else {
-      Cookie.remove('email');
+      Cookie.remove('email', { path: '/' });
     }
 
     /* Mutate */

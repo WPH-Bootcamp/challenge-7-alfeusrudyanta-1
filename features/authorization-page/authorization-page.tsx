@@ -33,7 +33,7 @@ const AuthorizationPage = () => {
       <div className='hidden w-1/2 overflow-hidden md:block'>
         <Image
           src='/images/auth-front.png'
-          alt='Auth Food Background'
+          alt='Foody Logo'
           loading='lazy'
           height={1024}
           width={720}

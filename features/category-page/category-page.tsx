@@ -2,7 +2,7 @@
 
 import RestaurantCard from '@/components/shared/restaurant-card';
 import { useRestFilter } from './hooks/use-rest-filter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CategoryFilter } from './components/category-filter';
 import { ListFilter } from 'lucide-react';
 import {
@@ -26,6 +26,19 @@ const CategoryPage = () => {
     priceMax,
     rating,
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.outerWidth >= 768) {
+        setIsSheetOpen(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSheetOpen = () => {
     setIsSheetOpen((prev) => !prev);
@@ -75,7 +88,7 @@ const CategoryPage = () => {
 
           {/* Filter Result */}
           <div className='grid h-fit w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5'>
-            <div className='flex items-center justify-between md:hidden'>
+            <div className='flex items-center justify-between rounded-xl p-4 shadow-[0_0_20px_#CBCACA40] md:hidden'>
               <span className='text-sm-extrabold text-neutral-950'>FILTER</span>
 
               <Sheet onOpenChange={setIsSheetOpen} open={isSheetOpen}>
