@@ -44,7 +44,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         </span>
 
         <div className='flex items-center'>
-          <Star size={24} fill='#FFAB0D' className='stroke-0' />
+          <Star size={24} className='fill-[#FFAB0D] stroke-0' />
           <span>{star.toFixed(1)}</span>
         </div>
 
