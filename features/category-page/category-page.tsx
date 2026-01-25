@@ -11,6 +11,7 @@ import {
   SheetContent,
   SheetTitle,
 } from '@/components/ui/sheet';
+import { LoadingSpinner } from '@/components/shared/loading-spinner';
 
 const CategoryPage = () => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
@@ -86,44 +87,54 @@ const CategoryPage = () => {
             />
           </div>
 
-          {/* Filter Result */}
-          <div className='grid h-fit w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5'>
-            <div className='flex items-center justify-between rounded-xl p-4 shadow-[0_0_20px_#CBCACA40] md:hidden'>
-              <span className='text-sm-extrabold text-neutral-950'>FILTER</span>
-
-              <Sheet onOpenChange={setIsSheetOpen} open={isSheetOpen}>
-                <SheetTrigger asChild>
-                  <ListFilter onClick={handleSheetOpen} className='size-5' />
-                </SheetTrigger>
-                <SheetContent side='left'>
-                  <SheetTitle></SheetTitle>
-                  <CategoryFilter
-                    showShadow={false}
-                    isPending={isPending}
-                    priceMin={priceMin}
-                    handlePriceMin={handlePriceMin}
-                    priceMax={priceMax}
-                    handlePriceMax={handlePriceMax}
-                    rating={rating}
-                    handleRating={handleRating}
-                  />
-                </SheetContent>
-              </Sheet>
+          {isPending && (
+            <div className='mx-auto mt-10 flex w-full items-center justify-center'>
+              <LoadingSpinner className='border-primary-100 mx-auto size-10 border-t-0' />
             </div>
+          )}
 
-            {data?.pages.map((card) =>
-              card.data.restaurants.map((restaurant) => (
-                <RestaurantCard
-                  key={restaurant.id}
-                  id={restaurant.id}
-                  logo={restaurant.logo}
-                  name={restaurant.name}
-                  star={restaurant.star}
-                  place={restaurant.place}
-                />
-              ))
-            )}
-          </div>
+          {/* Filter Result */}
+          {!isPending && (
+            <div className='grid h-fit w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5'>
+              <div className='flex items-center justify-between rounded-xl p-4 shadow-[0_0_20px_#CBCACA40] md:hidden'>
+                <span className='text-sm-extrabold text-neutral-950'>
+                  FILTER
+                </span>
+
+                <Sheet onOpenChange={setIsSheetOpen} open={isSheetOpen}>
+                  <SheetTrigger asChild>
+                    <ListFilter onClick={handleSheetOpen} className='size-5' />
+                  </SheetTrigger>
+                  <SheetContent side='left'>
+                    <SheetTitle></SheetTitle>
+                    <CategoryFilter
+                      showShadow={false}
+                      isPending={isPending}
+                      priceMin={priceMin}
+                      handlePriceMin={handlePriceMin}
+                      priceMax={priceMax}
+                      handlePriceMax={handlePriceMax}
+                      rating={rating}
+                      handleRating={handleRating}
+                    />
+                  </SheetContent>
+                </Sheet>
+              </div>
+
+              {data?.pages.map((card) =>
+                card.data.restaurants.map((restaurant) => (
+                  <RestaurantCard
+                    key={restaurant.id}
+                    id={restaurant.id}
+                    logo={restaurant.logo}
+                    name={restaurant.name}
+                    star={restaurant.star}
+                    place={restaurant.place}
+                  />
+                ))
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -4,11 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Logo: React.FC<LogoProps> = ({ isHome, isScrolled }) => {
-  const ImageSrc = isScrolled
-    ? '/icons/logo-red.svg'
-    : !isHome
-      ? '/icons/logo-red.svg'
-      : '/icons/logo-white.svg';
+  const ImageSrc =
+    isScrolled || !isHome
+      ? '/icons/header-bag-black.svg'
+      : '/icons/header-bag-white.svg';
 
   return (
     <Link href={'/'} className='flex items-center gap-3.75'>

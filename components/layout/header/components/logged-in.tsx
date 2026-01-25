@@ -22,9 +22,8 @@ const LoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const ImageSrc = isScrolled
-    ? '/icons/header-bag-black.svg'
-    : !isHome
+  const ImageSrc =
+    isScrolled || !isHome
       ? '/icons/header-bag-black.svg'
       : '/icons/header-bag-white.svg';
 
@@ -55,7 +54,7 @@ const LoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
   return (
     <div className='flex items-center gap-4 md:gap-6'>
       {/* Cart */}
-      <Link href={'/mycart'} className='relative'>
+      <Link href={'/my-cart'} className='relative'>
         <Image
           src={ImageSrc}
           alt='Bag Icon'

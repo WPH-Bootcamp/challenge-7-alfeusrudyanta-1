@@ -51,7 +51,7 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
         </span>
       </Link>
 
-      <Link href={'/myorder'} className='group flex items-center gap-2'>
+      <Link href={'/my-order'} className='group flex items-center gap-2'>
         <FileText className='group-hover:text-primary-100 size-6 text-neutral-900' />
         <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950'>
           My Orders
