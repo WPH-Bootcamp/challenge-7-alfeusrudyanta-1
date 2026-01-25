@@ -27,4 +27,4 @@ const QueryClientWrapper: React.FC<QueryClientWrapperProps> = ({
   );
 };
 
-export { QueryClientWrapper };
+export { QueryClientWrapper, queryClient };

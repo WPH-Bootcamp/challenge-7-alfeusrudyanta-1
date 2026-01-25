@@ -1,5 +1,7 @@
 import { apiCart } from '@/api/api-cart';
-import { useQuery } from '@tanstack/react-query';
+import { queryClient } from '@/lib/query-client-wrapper';
+import { PostCartReq } from '@/types/api-cart';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 const useGetCart = () => {
   return useQuery({
@@ -10,4 +12,15 @@ const useGetCart = () => {
   });
 };
 
-export { useGetCart };
+const usePostCart = () => {
+  return useMutation({
+    mutationFn: (data: PostCartReq) => {
+      return apiCart.postCart(data);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['cart'] });
+    },
+  });
+};
+
+export { useGetCart, usePostCart };

@@ -63,7 +63,7 @@ const OrderCard: React.FC<Order> = (order) => {
       <div className='w-full border border-neutral-300' />
 
       {/* Total */}
-      <div className='flex flex-col gap-3 md:flex-row md:justify-between'>
+      <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
         <div className='flex flex-col'>
           <span className='text-sm-medium md:text-md-medium text-neutral-950'>
             Total

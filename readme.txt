@@ -1,7 +1,5 @@
 List priority from top to bottom :
-review overlay
-page my-cart
-page checkout
+page checkout => get param from restaurant id
 page success
 page detail
 

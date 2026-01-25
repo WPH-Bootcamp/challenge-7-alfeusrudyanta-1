@@ -13,10 +13,14 @@ type CartItem = {
   itemTotal: number;
 };
 
-type CartRestaurant = {
+type Restaurant = {
   id: number;
   name: string;
   logo: string;
+};
+
+type CartRestaurant = {
+  restaurant: Restaurant;
   items: CartItem[];
   subtotal: number;
 };
@@ -38,4 +42,26 @@ type GetCartRes = {
   data: CartData;
 };
 
-export type { GetCartRes };
+type PostCartReq = {
+  restaurantId: number;
+  menuId: number;
+  quantity: number;
+};
+
+type PostCartItem = {
+  id: number;
+  restaurant: Restaurant;
+  menu: CartMenuItem;
+  quantity: number;
+  itemTotal: number;
+};
+
+type PostCartRes = {
+  success: boolean;
+  message: string;
+  data: {
+    cartItem: PostCartItem;
+  };
+};
+
+export type { GetCartRes, PostCartReq, PostCartRes, CartRestaurant };
