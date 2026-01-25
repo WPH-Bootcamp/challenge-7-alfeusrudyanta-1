@@ -1,8 +1,21 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Order } from '../types';
 import Image from 'next/image';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import { DialogData } from './dialog-data';
+import { useState } from 'react';
 
 const OrderCard: React.FC<Order> = (order) => {
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+
   return (
     <div className='flex w-full flex-col gap-3 rounded-2xl bg-white p-4 shadow-[0_0_20px_#CBCACA40] md:gap-4 md:p-5'>
       {/* Logo */}
@@ -61,7 +74,22 @@ const OrderCard: React.FC<Order> = (order) => {
           </span>
         </div>
 
-        <Button className='h-11 md:h-12 md:max-w-60'>Give Review</Button>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button className='h-11 md:h-12 md:max-w-60'>Give Review</Button>
+          </DialogTrigger>
+
+          <DialogContent>
+            <DialogTitle></DialogTitle>
+            <DialogDescription></DialogDescription>
+            <DialogData
+              transactionId={order.transactionId}
+              restaurantId={order.restaurants[0].restaurant.id}
+              menuIds={order.restaurants[0].items.map((menu) => menu.menuId)}
+              onClose={() => setIsDialogOpen(false)}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

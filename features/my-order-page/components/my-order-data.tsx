@@ -82,6 +82,7 @@ const MyOrderData = () => {
       {/* My Order */}
       <div ref={ref} className='flex flex-col gap-5'>
         {filteredData.length === 0 &&
+          !isPending &&
           (search ? (
             <span className='text-sm-medium md:text-md-medium text-neutral-950'>
               Try a different search term or check your spelling

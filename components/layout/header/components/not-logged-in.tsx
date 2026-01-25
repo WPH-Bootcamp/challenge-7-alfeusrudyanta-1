@@ -9,6 +9,7 @@ import {
   SheetTrigger,
   SheetContent,
   SheetTitle,
+  SheetDescription,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -41,6 +42,7 @@ const NotLoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
           </SheetTrigger>
           <SheetContent side='left'>
             <SheetTitle></SheetTitle>
+            <SheetDescription></SheetDescription>
             <div className='text-sm-bold flex cursor-pointer flex-col gap-4 px-4 py-8 text-neutral-950 hover:text-neutral-950/90'>
               <Link href={'/authorization?tab=sign-in'}>Sign In</Link>
               <Link href={'/authorization?tab=sign-up'}>Sign Up</Link>

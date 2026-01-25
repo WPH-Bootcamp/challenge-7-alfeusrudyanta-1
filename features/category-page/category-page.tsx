@@ -10,6 +10,7 @@ import {
   SheetTrigger,
   SheetContent,
   SheetTitle,
+  SheetDescription,
 } from '@/components/ui/sheet';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 
@@ -107,6 +108,7 @@ const CategoryPage = () => {
                   </SheetTrigger>
                   <SheetContent side='left'>
                     <SheetTitle></SheetTitle>
+                    <SheetDescription></SheetDescription>
                     <CategoryFilter
                       showShadow={false}
                       isPending={isPending}
