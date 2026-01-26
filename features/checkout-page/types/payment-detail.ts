@@ -8,4 +8,6 @@ export type PaymentDetailProps = {
   totalPrice: number;
   selectedBank: string;
   setSelectedBank: Dispatch<SetStateAction<string>>;
+  handleCheckout: () => void;
+  isPending: boolean;
 };

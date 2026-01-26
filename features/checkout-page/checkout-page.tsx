@@ -2,17 +2,25 @@
 
 import { CartCard } from '@/components/shared/cart-card';
 import { Button } from '@/components/ui/button';
-import { useGetCart } from '@/hooks/use-cart';
-import { useParams } from 'next/navigation';
+import { useDeleteCart, useGetCart } from '@/hooks/use-cart';
+import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useGetProfile } from '@/hooks/use-profie';
 import { DeliveryDetail } from './components/delivery-detail';
 import { PaymentDetail } from './components/payment-detail';
+import { useCheckout } from '@/hooks/use-checkout';
 
 export const CheckoutPage = () => {
+  const router = useRouter();
   const { id } = useParams();
+
+  /* Query */
   const cart = useGetCart();
   const profile = useGetProfile();
+
+  /* Mutation */
+  const checkout = useCheckout();
+  const deleteCart = useDeleteCart();
 
   const [selectedBank, setSelectedBank] = useState<string>(
     'Bank Negara Indonesia'
@@ -29,10 +37,40 @@ export const CheckoutPage = () => {
   const diplayedPhoneNumber =
     profile.data?.data.phone.replace(/(\d{4})(?=\d)/g, '$1-') || '';
   const totalItem = cart.data?.data.summary.totalItems ?? 0;
+
   const price = cart.data?.data.summary.totalPrice ?? 0;
   const deliveryFee = 10000;
   const serviceFee = 1000;
   const totalPrice = price + deliveryFee + serviceFee;
+
+  const itemsData =
+    cartData?.items.map((item) => {
+      return { menuId: item.menu.id, quantity: item.quantity };
+    }) ?? [];
+
+  const handleCheckOut = () => {
+    if (totalItem === 0) return;
+
+    const data = {
+      restaurants: [
+        {
+          restaurantId: cartData?.restaurant.id ?? 0,
+          items: itemsData,
+        },
+      ],
+      deliveryAddress: address,
+      phone: diplayedPhoneNumber,
+      paymentMethod: selectedBank,
+      notes: 'Please ring the doorbell',
+    };
+
+    checkout.mutate(data, {
+      onSuccess: () => {
+        cartData?.items.forEach((item) => deleteCart.mutate(item.id));
+        router.push('/success');
+      },
+    });
+  };
 
   if (cartData === undefined) {
     return null;
@@ -66,6 +104,8 @@ export const CheckoutPage = () => {
               totalPrice={totalPrice}
               selectedBank={selectedBank}
               setSelectedBank={setSelectedBank}
+              handleCheckout={handleCheckOut}
+              isPending={deleteCart.isPending}
             />
           </div>
         </div>

@@ -11,6 +11,8 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
   totalPrice,
   selectedBank,
   setSelectedBank,
+  handleCheckout,
+  isPending,
 }) => {
   return (
     <div className='flex w-full flex-col gap-3 md:gap-4'>
@@ -51,7 +53,7 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
               value={bank.display}
               checked={selectedBank === bank.display}
               onChange={(e) => setSelectedBank(e.target.value)}
-              className='accent-primary-100 h-6 w-6'
+              className='accent-primary-100 h-6 w-6 cursor-pointer'
             />
           </label>
 
@@ -71,7 +73,7 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
 
         <div className='flex items-center justify-between gap-4'>
           <span className='md:text-md-medium text-sm-medium text-neutral-950'>
-            Price {totalItem} item(s)
+            Price ({totalItem} item{totalItem > 1 && 's'})
           </span>
           <span className='md:text-md-bold text-sm-bold text-neutral-950'>
             Rp{price.toLocaleString('id-ID')}
@@ -105,7 +107,12 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
           </span>
         </div>
 
-        <Button type='button' className='h-11 md:h-12'>
+        <Button
+          disabled={isPending}
+          onClick={handleCheckout}
+          type='button'
+          className='h-11 md:h-12'
+        >
           Buy
         </Button>
       </div>

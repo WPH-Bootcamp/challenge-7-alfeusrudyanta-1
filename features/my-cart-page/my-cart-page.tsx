@@ -15,6 +15,19 @@ const MyCartPage = () => {
 
         {/* Cart Item(s) */}
         <div className='flex flex-col gap-5'>
+          {data?.data.cart.length === 0 && (
+            <div className='flex flex-col gap-3 md:max-w-175'>
+              <span className='md:text-lg-extrabold text-md-extrabold text-neutral-950'>
+                Your cart is empty
+              </span>
+
+              <span className='md:text-md-medium text-sm-medium text-neutral-950'>
+                Looks like you haven't added any items to your cart yet. Start
+                exploring our restaurants and add delicious food to your cart!
+              </span>
+            </div>
+          )}
+
           {data?.data.cart.map((restaurant) => (
             <CartCard key={restaurant.restaurant.id} {...restaurant} />
           ))}

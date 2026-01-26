@@ -58,7 +58,7 @@ const LoggedIn: React.FC<LoggedInProps> = ({ isScrolled, cart, profile }) => {
           className='cursor-pointer md:size-8'
         />
 
-        {cart && (
+        {cart && cart.data.summary.restaurantCount > 0 && (
           <div className='bg-primary-100 absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-white'>
             <span>{cart.data?.summary?.restaurantCount}</span>
           </div>
