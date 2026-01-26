@@ -71,14 +71,7 @@ const HomePage = () => {
         <div className='grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5'>
           {data?.data?.pages.map((card) =>
             card.data.restaurants.map((restaurant) => (
-              <RestaurantCard
-                key={restaurant.id}
-                id={restaurant.id}
-                logo={restaurant.logo}
-                name={restaurant.name}
-                star={restaurant.star}
-                place={restaurant.place}
-              />
+              <RestaurantCard key={restaurant.id} {...restaurant} />
             ))
           )}
         </div>

@@ -1,11 +1,7 @@
-'use client';
-
 import { Button } from '@/components/ui/button';
-import { useGetProfile } from '@/hooks/use-profie';
+import { Profile } from '@/types/api-profile';
 
-const ProfileData = () => {
-  const { data } = useGetProfile();
-
+const ProfileData: React.FC<Profile> = ({ name, email, phone }) => {
   return (
     <div className='flex w-full max-w-131 flex-col gap-6 rounded-2xl p-4 shadow-[0_0_20px_#CBCACA40] md:p-5'>
       {/* Profile data */}
@@ -16,7 +12,7 @@ const ProfileData = () => {
           </span>
 
           <span className='text-sm-bold md:text-md-bold text-neutral-950'>
-            {data?.data.name}
+            {name}
           </span>
         </div>
 
@@ -26,7 +22,7 @@ const ProfileData = () => {
           </span>
 
           <span className='text-sm-bold md:text-md-bold text-neutral-950'>
-            {data?.data.email}
+            {email}
           </span>
         </div>
 
@@ -36,7 +32,7 @@ const ProfileData = () => {
           </span>
 
           <span className='text-sm-bold md:text-md-bold text-neutral-950'>
-            {data?.data.phone}
+            {phone}
           </span>
         </div>
       </div>

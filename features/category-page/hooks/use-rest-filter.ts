@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getRestCategory } from '../types';
+import { getRestCategory } from '@/features/category-page/types/category';
 import { apiCategory } from '../api/api-category';
 
 const useRestFilter = (data: getRestCategory) => {

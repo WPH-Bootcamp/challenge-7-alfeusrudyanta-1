@@ -1,4 +1,4 @@
-type Profile = {
+export type Profile = {
   id: number;
   name: string;
   email: string;
@@ -8,10 +8,8 @@ type Profile = {
   updatedAt: string;
 };
 
-type GetProfileRes = {
+export type GetProfileRes = {
   success: boolean;
   message: string;
   data: Profile;
 };
-
-export type { GetProfileRes };

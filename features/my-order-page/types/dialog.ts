@@ -1,11 +1,11 @@
-type DialogDataProps = {
+export type DialogDataProps = {
   transactionId: string;
   restaurantId: number;
   menuIds: number[];
   onClose: () => void;
 };
 
-type PostReviewReq = {
+export type PostReviewReq = {
   transactionId: string;
   restaurantId: number;
   star: number;
@@ -13,26 +13,26 @@ type PostReviewReq = {
   menuIds: number[];
 };
 
-interface MenuItem {
+export type MenuItem = {
   menuId: number;
   menuName: string;
   price: number;
   type: string;
   image: string;
   quantity: number;
-}
+};
 
-interface UserInfo {
-  id: number;
-  name: string;
-}
-
-type RestaurantInfo = {
+export type UserInfo = {
   id: number;
   name: string;
 };
 
-type ReviewDetails = {
+export type RestaurantInfo = {
+  id: number;
+  name: string;
+};
+
+export type ReviewDetails = {
   id: number;
   star: number;
   comment: string;
@@ -43,12 +43,10 @@ type ReviewDetails = {
   menus: MenuItem[];
 };
 
-type PostReviewRes = {
+export type PostReviewRes = {
   success: boolean;
   message: string;
   data: {
     review: ReviewDetails;
   };
 };
-
-export type { DialogDataProps, PostReviewReq, PostReviewRes };

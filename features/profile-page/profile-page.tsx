@@ -1,7 +1,12 @@
+'use client';
+
 import { ProfileSide } from '@/components/shared/profile-side';
 import { ProfileData } from './components/profile-data';
+import { useGetProfile } from '@/hooks/use-profie';
 
 const ProfilePage = () => {
+  const { data } = useGetProfile();
+
   return (
     <section className='px-4 py-20 pb-12 md:px-30 md:py-32'>
       <div className='flex md:gap-8'>
@@ -11,7 +16,7 @@ const ProfilePage = () => {
             Profile
           </span>
 
-          <ProfileData />
+          {data?.data && <ProfileData {...data.data} />}
         </div>
       </div>
     </section>

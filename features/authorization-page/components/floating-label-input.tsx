@@ -1,12 +1,5 @@
 import { cn } from '@/lib/utils';
-
-interface FloatingLabelInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  containerClassName?: string;
-  labelClassName?: string;
-  inputClassName?: string;
-  error?: string;
-}
+import { FloatingLabelInputProps } from '../types/floating-label-input';
 
 const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({
   label,

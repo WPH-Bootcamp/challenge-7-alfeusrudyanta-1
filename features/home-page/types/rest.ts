@@ -1,18 +1,18 @@
-type BestRestoReqParams = {
+export type BestRestoReqParams = {
   page: number;
   limit: number;
 };
 
-type SearchRestoReqParams = BestRestoReqParams & {
+export type SearchRestoReqParams = BestRestoReqParams & {
   q: string;
 };
 
-type PriceRange = {
+export type PriceRange = {
   min: number;
   max: number;
 };
 
-type Restaurant = {
+export type Restaurant = {
   id: number;
   name: string;
   star: number;
@@ -25,14 +25,14 @@ type Restaurant = {
   priceRange: PriceRange;
 };
 
-type Pagination = {
+export type Pagination = {
   page: number;
   limit: number;
   total: number;
   totalPages: number;
 };
 
-type RestaurantResponse = {
+export type RestaurantResponse = {
   success: boolean;
   message: string;
   data: {
@@ -41,5 +41,3 @@ type RestaurantResponse = {
     searchQuery?: string;
   };
 };
-
-export type { BestRestoReqParams, SearchRestoReqParams, RestaurantResponse };

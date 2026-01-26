@@ -1,6 +1,6 @@
 'use client';
 
-import { CartCardWithAction } from '@/components/shared/cart-card-with-action';
+import { CartCard } from '@/components/shared/cart-card';
 import { useGetCart } from '@/hooks/use-cart';
 
 const MyCartPage = () => {
@@ -16,10 +16,7 @@ const MyCartPage = () => {
         {/* Cart Item(s) */}
         <div className='flex flex-col gap-5'>
           {data?.data.cart.map((restaurant) => (
-            <CartCardWithAction
-              key={restaurant.restaurant.id}
-              {...restaurant}
-            />
+            <CartCard key={restaurant.restaurant.id} {...restaurant} />
           ))}
         </div>
       </div>

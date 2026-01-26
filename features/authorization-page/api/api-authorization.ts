@@ -1,10 +1,12 @@
 import { AxiosInstance } from '@/services/axios';
 import type {
-  PostRegisterReq,
-  PostRegisterRes,
   PostLoginReq,
   PostLoginRes,
-} from '@/features/authorization-page/types';
+} from '@/features/authorization-page/types/login';
+import type {
+  PostRegisterReq,
+  PostRegisterRes,
+} from '@/features/authorization-page/types/register';
 
 const apiAuth = {
   postRegister: async (data: PostRegisterReq): Promise<PostRegisterRes> => {

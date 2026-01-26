@@ -1,4 +1,4 @@
-type UserData = {
+export type UserData = {
   id: number;
   name: string;
   email: string;
@@ -6,12 +6,12 @@ type UserData = {
   avatar: string | null;
 };
 
-type PostLoginReq = {
+export type PostLoginReq = {
   email: string;
   password: string;
 };
 
-type PostLoginRes = {
+export type PostLoginRes = {
   success: boolean;
   message: string;
   data: {
@@ -20,10 +20,8 @@ type PostLoginRes = {
   };
 };
 
-type LoginFormErrors = {
+export type LoginFormErrors = {
   email?: string;
   password?: string;
   general?: string;
 };
-
-export type { PostLoginReq, PostLoginRes, LoginFormErrors };

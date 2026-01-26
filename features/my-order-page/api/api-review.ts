@@ -1,5 +1,8 @@
 import { AxiosInstance } from '@/services/axios';
-import { PostReviewReq, PostReviewRes } from '../types';
+import {
+  PostReviewReq,
+  PostReviewRes,
+} from '@/features/my-order-page/types/dialog';
 
 const apiReview = {
   postReview: async (data: PostReviewReq): Promise<PostReviewRes> => {

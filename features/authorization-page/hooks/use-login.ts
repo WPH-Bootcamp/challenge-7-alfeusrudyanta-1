@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { apiAuth } from '../api/api-authorization';
-import type { PostLoginReq } from '../types';
+import type { PostLoginReq } from '@/features/authorization-page/types/login';
 import Cookies from 'js-cookie';
 
 const useLogin = () => {

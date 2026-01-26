@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { Scrolled } from '../types';
+import { NotLoggedInProps } from '@/components/layout/header/types/not-logged-in';
 import {
   Sheet,
   SheetTrigger,
@@ -14,7 +14,7 @@ import {
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const NotLoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
+const NotLoggedIn: React.FC<NotLoggedInProps> = ({ isScrolled }) => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
   useEffect(() => {

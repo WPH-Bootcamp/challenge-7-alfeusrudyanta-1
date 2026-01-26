@@ -1,6 +1,6 @@
 import { Search } from 'lucide-react';
 import Image from 'next/image';
-import { HeroSearchProps } from '../types';
+import { HeroSearchProps } from '@/features/home-page/types/hero';
 
 const HeroSearch: React.FC<HeroSearchProps> = ({ search, setSearch }) => {
   return (

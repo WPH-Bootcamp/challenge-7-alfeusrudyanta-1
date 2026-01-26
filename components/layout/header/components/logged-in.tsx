@@ -1,19 +1,14 @@
 'use client';
 
-import { Scrolled } from '../types';
-import { useGetCart } from '@/hooks/use-cart';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useGetProfile } from '@/hooks/use-profie';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { ProfileSide } from '@/components/shared/profile-side';
-import { profile } from 'console';
+import { LoggedInProps } from '../types/logged-in';
 
-const LoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
-  const cart = useGetCart();
-  const profile = useGetProfile();
+const LoggedIn: React.FC<LoggedInProps> = ({ isScrolled, cart, profile }) => {
   const pathName = usePathname();
   const router = useRouter();
 
@@ -63,9 +58,9 @@ const LoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
           className='cursor-pointer md:size-8'
         />
 
-        {cart.data?.data.summary.restaurantCount && (
+        {cart && (
           <div className='bg-primary-100 absolute -top-1 -right-1 flex size-5 items-center justify-center rounded-full text-white'>
-            <span>{cart.data?.data.summary.restaurantCount}</span>
+            <span>{cart.data?.summary?.restaurantCount}</span>
           </div>
         )}
       </Link>
@@ -74,7 +69,7 @@ const LoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
       <div onClick={handleMenuOpen} className='relative'>
         <div className='flex cursor-pointer items-center gap-4'>
           <Image
-            src={profile.data?.data.avatar ?? '/images/user.png'}
+            src={profile?.data?.avatar ?? '/images/user.png'}
             alt='User Profile Picture'
             height={40}
             width={40}
@@ -88,7 +83,7 @@ const LoggedIn: React.FC<Scrolled> = ({ isScrolled }) => {
               isScrolled && 'text-neutral-950'
             )}
           >
-            {profile.data?.data.name}
+            {profile?.data?.name}
           </span>
 
           {/* Overlay */}

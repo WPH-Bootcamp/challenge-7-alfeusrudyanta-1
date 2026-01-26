@@ -1,13 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@radix-ui/react-checkbox';
-import { error } from 'console';
-import { email } from 'zod';
 import { FloatingLabelInput } from './floating-label-input';
 import { useState } from 'react';
 import { useRegister } from '../hooks/use-register';
-import type { RegisterFormErrors } from '@/features/authorization-page/types';
+import type { RegisterFormErrors } from '@/features/authorization-page/types/register';
 import { registerSchema } from '../schema/register-schema';
 import { useRouter } from 'next/navigation';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';

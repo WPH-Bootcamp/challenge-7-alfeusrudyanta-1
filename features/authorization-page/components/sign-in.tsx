@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { loginSchema } from '../schema/login-schema';
 import Cookie from 'js-cookie';
-import type { LoginFormErrors } from '@/features/authorization-page/types';
+import type { LoginFormErrors } from '@/features/authorization-page/types/login';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 
 const SignIn = () => {

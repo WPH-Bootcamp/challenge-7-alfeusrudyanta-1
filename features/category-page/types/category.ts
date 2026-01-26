@@ -1,9 +1,9 @@
-type InfiniteReq = {
+export type InfiniteReq = {
   page: number;
   limit: number;
 };
 
-type getRestCategory = {
+export type getRestCategory = {
   location: string | null;
   range: number | null;
   priceMin: number | null;
@@ -12,14 +12,14 @@ type getRestCategory = {
   category: string | null;
 };
 
-type getRestCategoryReq = InfiniteReq & getRestCategory;
+export type getRestCategoryReq = InfiniteReq & getRestCategory;
 
-type PriceRange = {
+export type PriceRange = {
   min: number;
   max: number;
 };
 
-type Restaurant = {
+export type Restaurant = {
   id: number;
   name: string;
   star: number;
@@ -32,14 +32,14 @@ type Restaurant = {
   priceRange: PriceRange;
 };
 
-type Pagination = {
+export type Pagination = {
   page: number;
   limit: number;
   total: number;
   totalPages: number;
 };
 
-type Filters = {
+export type Filters = {
   range: number | null;
   priceMin: number | null;
   priceMax: number | null;
@@ -47,7 +47,7 @@ type Filters = {
   category: string | null;
 };
 
-type getRestCategoryRes = {
+export type getRestCategoryRes = {
   success: boolean;
   message: string;
   data: {
@@ -56,5 +56,3 @@ type getRestCategoryRes = {
     filters: Filters;
   };
 };
-
-export type { getRestCategory, getRestCategoryReq, getRestCategoryRes };

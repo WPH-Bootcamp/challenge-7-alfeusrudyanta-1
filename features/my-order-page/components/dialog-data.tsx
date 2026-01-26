@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { Star } from 'lucide-react';
 import { useState } from 'react';
 import { usePostReview } from '../hooks/use-review';
-import { DialogDataProps } from '../types';
+import { DialogDataProps } from '../types/dialog';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 
 const DialogData: React.FC<DialogDataProps> = ({

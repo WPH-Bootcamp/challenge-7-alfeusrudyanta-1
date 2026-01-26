@@ -2,14 +2,10 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { Dot, Star } from 'lucide-react';
 import Link from 'next/link';
+import { Restaurant } from '@/features/category-page/types/category';
 
-type RestaurantCardProps = {
+type RestaurantCardProps = Restaurant & {
   showOutline?: boolean;
-  id: number;
-  logo: string;
-  name: string;
-  star: number;
-  place: string;
 };
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
@@ -26,7 +22,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       className={cn(
         showOutline &&
           'gap-2 rounded-2xl p-4 shadow-[0_0_20px_#CBCACA40] md:gap-3',
-        'flex items-center gap-2 md:gap-3'
+        'flex items-center gap-2 overflow-hidden bg-white md:gap-3'
       )}
     >
       <Image
@@ -34,7 +30,10 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         alt={name}
         height={120}
         width={120}
-        className={cn(showOutline ? 'rounded-xl' : 'rounded-full')}
+        className={cn(
+          'object-cover',
+          showOutline ? 'rounded-xl' : 'rounded-full'
+        )}
       />
 
       {/* Restaurant Details */}

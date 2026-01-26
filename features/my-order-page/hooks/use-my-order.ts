@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { apiMyOrder } from '../api/api-my-order';
-import { Status } from '../types';
+import { Status } from '../types/my-order';
 
 const useMyOrder = (status: Status) => {
   return useInfiniteQuery({

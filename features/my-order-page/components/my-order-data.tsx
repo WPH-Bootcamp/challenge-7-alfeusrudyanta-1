@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { STATUS_DATA } from '../constant/status-data';
 import { useMyOrder } from '../hooks/use-my-order';
-import { Status } from '../types';
+import { Status } from '../types/my-order';
 import { useInView } from 'react-intersection-observer';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';

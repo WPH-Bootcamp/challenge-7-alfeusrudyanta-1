@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
-const useAuth = () => {
+export const useAuth = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
@@ -18,5 +18,3 @@ const useAuth = () => {
 
   return { isLoggedIn, logout };
 };
-
-export { useAuth };

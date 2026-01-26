@@ -1,4 +1,4 @@
-type CartMenuItem = {
+export type CartMenuItem = {
   id: number;
   foodName: string;
   price: number;
@@ -6,49 +6,49 @@ type CartMenuItem = {
   image: string;
 };
 
-type CartItem = {
+export type CartItem = {
   id: number;
   menu: CartMenuItem;
   quantity: number;
   itemTotal: number;
 };
 
-type Restaurant = {
+export type Restaurant = {
   id: number;
   name: string;
   logo: string;
 };
 
-type CartRestaurant = {
+export type CartRestaurant = {
   restaurant: Restaurant;
   items: CartItem[];
   subtotal: number;
 };
 
-type CartSummary = {
+export type CartSummary = {
   totalItems: number;
   totalPrice: number;
   restaurantCount: number;
 };
 
-type CartData = {
+export type CartData = {
   cart: CartRestaurant[];
   summary: CartSummary;
 };
 
-type GetCartRes = {
+export type GetCartRes = {
   success: boolean;
   message: string;
   data: CartData;
 };
 
-type PostCartReq = {
+export type PostCartReq = {
   restaurantId: number;
   menuId: number;
   quantity: number;
 };
 
-type PostCartItem = {
+export type PostCartItem = {
   id: number;
   restaurant: Restaurant;
   menu: CartMenuItem;
@@ -56,7 +56,7 @@ type PostCartItem = {
   itemTotal: number;
 };
 
-type PostCartRes = {
+export type PostCartRes = {
   success: boolean;
   message: string;
   data: {
@@ -64,4 +64,14 @@ type PostCartRes = {
   };
 };
 
-export type { GetCartRes, PostCartReq, PostCartRes, CartRestaurant };
+export type PutCartReq = {
+  quantity: number;
+};
+
+export type PutCartRes = PostCartItem;
+
+export type DeleteCartRes = {
+  success: boolean;
+  message: string;
+  data: null;
+};

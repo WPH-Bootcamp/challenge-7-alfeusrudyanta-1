@@ -125,14 +125,7 @@ const CategoryPage = () => {
 
               {data?.pages.map((card) =>
                 card.data.restaurants.map((restaurant) => (
-                  <RestaurantCard
-                    key={restaurant.id}
-                    id={restaurant.id}
-                    logo={restaurant.logo}
-                    name={restaurant.name}
-                    star={restaurant.star}
-                    place={restaurant.place}
-                  />
+                  <RestaurantCard key={restaurant.id} {...restaurant} />
                 ))
               )}
             </div>

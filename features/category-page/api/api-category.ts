@@ -1,5 +1,8 @@
 import { AxiosInstance } from '@/services/axios';
-import { getRestCategoryReq, getRestCategoryRes } from '../types';
+import {
+  getRestCategoryReq,
+  getRestCategoryRes,
+} from '@/features/category-page/types/category';
 
 const apiCategory = {
   getRestFilter: async (

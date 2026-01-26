@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { PostReviewReq } from '../types';
+import { PostReviewReq } from '../types/dialog';
 import { apiReview } from '../api/api-review';
 
 const usePostReview = () => {

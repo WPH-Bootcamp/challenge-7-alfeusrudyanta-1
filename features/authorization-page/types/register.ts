@@ -1,4 +1,4 @@
-type UserDataWithCreatedAt = {
+export type UserDataWithCreatedAt = {
   id: number;
   name: string;
   email: string;
@@ -6,14 +6,14 @@ type UserDataWithCreatedAt = {
   createdAt: string;
 };
 
-type PostRegisterReq = {
+export type PostRegisterReq = {
   name: string;
   email: string;
   phone: string;
   password: string;
 };
 
-type PostRegisterRes = {
+export type PostRegisterRes = {
   success: boolean;
   message: string;
   data: {
@@ -22,12 +22,10 @@ type PostRegisterRes = {
   };
 };
 
-type RegisterFormErrors = {
+export type RegisterFormErrors = {
   name?: string;
   email?: string;
   phone?: string;
   password?: string;
   general?: string;
 };
-
-export type { PostRegisterReq, PostRegisterRes, RegisterFormErrors };

@@ -1,25 +1,30 @@
-type Status = 'preparing' | 'on_the_way' | 'delivered' | 'done' | 'cancelled';
+export type Status =
+  | 'preparing'
+  | 'on_the_way'
+  | 'delivered'
+  | 'done'
+  | 'cancelled';
 
-type GetMyOrderReqParams = {
+export type GetMyOrderReqParams = {
   status: Status;
   page: number;
   limit: number;
 };
 
-type Pricing = {
+export type Pricing = {
   subtotal: number;
   serviceFee: number;
   deliveryFee: number;
   totalPrice: number;
 };
 
-type Restaurant = {
+export type Restaurant = {
   id: number;
   name: string;
   logo: string;
 };
 
-type OrderItem = {
+export type OrderItem = {
   menuId: number;
   menuName: string;
   price: number;
@@ -28,13 +33,13 @@ type OrderItem = {
   itemTotal: number;
 };
 
-type RestaurantOrder = {
+export type RestaurantOrder = {
   restaurant: Restaurant;
   items: OrderItem[];
   subtotal: number;
 };
 
-type Order = {
+export type Order = {
   id: number;
   transactionId: string;
   status: string;
@@ -47,23 +52,21 @@ type Order = {
   updatedAt: string;
 };
 
-type Pagination = {
+export type Pagination = {
   page: number;
   limit: number;
   total: number;
   totalPages: number;
 };
 
-type OrderListData = {
+export type OrderListData = {
   orders: Order[];
   pagination: Pagination;
   filter: Status;
 };
 
-type GetMyOrderRes = {
+export type GetMyOrderRes = {
   success: boolean;
   message: string;
   data: OrderListData;
 };
-
-export type { GetMyOrderReqParams, GetMyOrderRes, Status, Order };

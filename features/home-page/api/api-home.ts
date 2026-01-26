@@ -3,7 +3,7 @@ import type {
   BestRestoReqParams,
   SearchRestoReqParams,
   RestaurantResponse,
-} from '../types';
+} from '@/features/home-page/types/rest';
 
 const apiHome = {
   getRestoBestSeller: async (
