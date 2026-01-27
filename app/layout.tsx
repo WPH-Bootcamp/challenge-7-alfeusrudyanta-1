@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import './globals.css';
 import { QueryClientWrapper } from '@/lib/query-client-wrapper';
+import { ReduxProviderWrapper } from '@/lib/redux-provider-wrapper';
 
 const nunito = Nunito({
   variable: '--font-nunito',
@@ -24,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn(nunito.variable, 'antialiased')}>
-        <QueryClientWrapper>
-          <div className='bg-neutral-25 flex min-h-screen flex-col'>
-            {children}
-          </div>
-        </QueryClientWrapper>
+        <ReduxProviderWrapper>
+          <QueryClientWrapper>
+            <div className='bg-neutral-25 flex min-h-screen flex-col'>
+              {children}
+            </div>
+          </QueryClientWrapper>
+        </ReduxProviderWrapper>
       </body>
     </html>
   );

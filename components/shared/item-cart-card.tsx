@@ -72,7 +72,7 @@ export const ItemCartCard: React.FC<CartItem> = ({ menu, id, quantity }) => {
           alt={menu.foodName}
           height={64}
           width={64}
-          className='rounded-xl object-cover md:size-20'
+          className='size-16 rounded-xl object-cover md:size-20'
         />
 
         <div className='flex flex-col'>

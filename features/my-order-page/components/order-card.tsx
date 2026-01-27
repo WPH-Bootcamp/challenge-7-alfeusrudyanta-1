@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Order } from '../types';
+import { Order } from '@/features/my-order-page/types/my-order';
 import Image from 'next/image';
 import {
   Dialog,
@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { DialogData } from './dialog-data';
 import { useState } from 'react';
+import Link from 'next/link';
 
 const OrderCard: React.FC<Order> = (order) => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
@@ -19,18 +20,24 @@ const OrderCard: React.FC<Order> = (order) => {
   return (
     <div className='flex w-full flex-col gap-3 rounded-2xl bg-white p-4 shadow-[0_0_20px_#CBCACA40] md:gap-4 md:p-5'>
       {/* Logo */}
-      <div className='flex items-center gap-2'>
-        <Image
-          src={order.restaurants[0].restaurant.logo}
-          alt={order.restaurants[0].restaurant.name}
-          height={32}
-          width={32}
-        />
+      <Link
+        href={`/restaurant/${order.restaurants[0].restaurant.id}`}
+        className='flex items-center gap-2'
+      >
+        <div className='flex size-8 items-center justify-center overflow-hidden'>
+          <Image
+            src={order.restaurants[0].restaurant.logo}
+            alt={order.restaurants[0].restaurant.name}
+            height={32}
+            width={32}
+            className='size-8 object-cover'
+          />
+        </div>
 
         <span className='text-sm-bold md:text-lg-bold text-neutral-950'>
           {order.restaurants[0].restaurant.name}
         </span>
-      </div>
+      </Link>
 
       {/* Menu */}
       <div className='flex flex-col gap-3 md:gap-5'>
@@ -39,13 +46,15 @@ const OrderCard: React.FC<Order> = (order) => {
             key={menu.menuId}
             className='flex items-center gap-3 md:gap-4.25'
           >
-            <Image
-              src={menu.image}
-              alt={menu.menuName}
-              height={64}
-              width={64}
-              className='rounded-xl md:size-20'
-            />
+            <div className='flex size-16 items-center justify-center overflow-hidden md:size-20'>
+              <Image
+                src={menu.image}
+                alt={menu.menuName}
+                height={64}
+                width={64}
+                className='size-16 rounded-xl object-cover md:size-20'
+              />
+            </div>
 
             <div className='flex flex-col'>
               <span className='text-sm-medium md:text-md-medium text-neutral-950'>

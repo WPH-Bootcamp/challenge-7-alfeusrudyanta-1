@@ -3,7 +3,7 @@ add redux to save data === add date now on checkout page, ITEM: date, payment me
 
 page success
 
-search on main page => in case no result
+search on main page => in case no result, in case of no query return null?
 category filter => in case no result
 category filter => handlePrice min/max on keydown
 

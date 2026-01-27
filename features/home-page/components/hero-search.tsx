@@ -8,7 +8,7 @@ const HeroSearch: React.FC<HeroSearchProps> = ({ search, setSearch }) => {
       <Image
         src='/images/home-front.png'
         alt='Home Food Image'
-        loading='lazy'
+        loading='eager'
         fill
         className='object-cover'
       />

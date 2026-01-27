@@ -35,9 +35,9 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
                 <Image
                   src={bank.image}
                   alt={bank.value}
-                  height={30}
-                  width={30}
-                  className='object-cover'
+                  height={8}
+                  width={28}
+                  className='h-2 w-7 object-cover'
                 />
               </div>
 

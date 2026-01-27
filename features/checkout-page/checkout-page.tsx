@@ -1,7 +1,6 @@
 'use client';
 
 import { CartCard } from '@/components/shared/cart-card';
-import { Button } from '@/components/ui/button';
 import { useDeleteCart, useGetCart } from '@/hooks/use-cart';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -9,8 +8,13 @@ import { useGetProfile } from '@/hooks/use-profie';
 import { DeliveryDetail } from './components/delivery-detail';
 import { PaymentDetail } from './components/payment-detail';
 import { useCheckout } from '@/hooks/use-checkout';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAddress } from '@/store/slices/address-slice';
+import { setCheckout } from '@/store/slices/checkout-slice';
 
 export const CheckoutPage = () => {
+  const dispatch = useDispatch();
+  const address = useSelector(selectAddress);
   const router = useRouter();
   const { id } = useParams();
 
@@ -24,9 +28,6 @@ export const CheckoutPage = () => {
 
   const [selectedBank, setSelectedBank] = useState<string>(
     'Bank Negara Indonesia'
-  );
-  const [address] = useState<string>(
-    'Jl. Sudirman No. 25, Jakarta Pusat, 10220'
   );
 
   const restId = Number(id);
@@ -50,6 +51,16 @@ export const CheckoutPage = () => {
 
   const handleCheckOut = () => {
     if (totalItem === 0) return;
+
+    dispatch(
+      setCheckout({
+        selectedBank,
+        price,
+        deliveryFee,
+        serviceFee,
+        totalPrice,
+      })
+    );
 
     const data = {
       restaurants: [

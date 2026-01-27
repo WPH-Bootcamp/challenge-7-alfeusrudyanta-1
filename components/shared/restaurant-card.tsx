@@ -31,7 +31,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         height={120}
         width={120}
         className={cn(
-          'object-cover',
+          'size-30 object-cover',
           showOutline ? 'rounded-xl' : 'rounded-full'
         )}
       />

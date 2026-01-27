@@ -37,7 +37,7 @@ const CartCard: React.FC<CartCardProps> = ({
                 height={32}
                 width={32}
                 loading='lazy'
-                className='object-cover'
+                className='size-8 object-cover'
               />
 
               <span className='text-md-bold md:text-lg-bold text-neutral-950'>

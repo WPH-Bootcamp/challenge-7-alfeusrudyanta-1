@@ -9,8 +9,10 @@ const Icon = () => {
           <Image
             src='/icons/logo-red.svg'
             alt='Foody Logo'
+            loading='lazy'
             height={42}
             width={42}
+            className='size-10.5'
           />
 
           <span className='display-md-extrabold text-white'>Foody</span>
@@ -40,6 +42,7 @@ const Icon = () => {
                 loading='lazy'
                 height={13}
                 width={13}
+                className='size-3.25'
               />
             </div>
           ))}
