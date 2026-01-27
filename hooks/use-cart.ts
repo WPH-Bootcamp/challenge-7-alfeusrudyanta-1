@@ -32,6 +32,7 @@ export const usePutCart = (id: number) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
     },
+    throwOnError: true,
   });
 };
 
@@ -43,5 +44,6 @@ export const useDeleteCart = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
     },
+    throwOnError: true,
   });
 };

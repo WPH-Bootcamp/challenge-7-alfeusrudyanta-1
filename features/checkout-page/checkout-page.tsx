@@ -105,12 +105,12 @@ export const CheckoutPage = () => {
       <section className='px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
         <div className='mx-auto flex w-full max-w-120 flex-col items-center gap-3 md:gap-4'>
           <div className='flex w-full flex-col gap-1 md:gap-2'>
-            <span className='display-md-extrabold md:display-lg-extrabold text-neutral-950'>
-              Error
+            <span className='display-xs-extrabold md:display-sm-extrabold text-neutral-950'>
+              Empty Cart
             </span>
 
             <span className='text-sm-regular md:text-md-regular text-neutral-950'>
-              Add items to proceed to checkout
+              Add items to cart to proceed to checkout
             </span>
           </div>
 
@@ -126,7 +126,7 @@ export const CheckoutPage = () => {
   }
 
   return (
-    <div className='px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
+    <div className='bg-neutral-25 px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
       <div className='flex flex-col gap-4 md:gap-6'>
         <span className='display-xs-extrabold md:display-md-extrabold text-neutral-950'>
           Checkout Page

@@ -4,7 +4,10 @@ import { Dot, Star } from 'lucide-react';
 import Link from 'next/link';
 import { Restaurant } from '@/features/category-page/types/category';
 
-type RestaurantCardProps = Restaurant & {
+type RestaurantCardProps = Pick<
+  Restaurant,
+  'id' | 'logo' | 'name' | 'star' | 'place'
+> & {
   showOutline?: boolean;
 };
 
