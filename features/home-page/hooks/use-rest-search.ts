@@ -2,6 +2,8 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { apiHome } from '../api/api-home';
 
 const useRestSearch = (q: string) => {
+  const trimmedQ = q?.trim();
+
   return useInfiniteQuery({
     queryKey: ['restaurants', 'search', q],
     initialPageParam: 1,
@@ -19,6 +21,7 @@ const useRestSearch = (q: string) => {
         ? nextPage
         : undefined;
     },
+    enabled: !!trimmedQ && trimmedQ.length > 0,
   });
 };
 

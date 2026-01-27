@@ -88,6 +88,14 @@ const HomePage = () => {
         )}
       </div>
 
+      {data.data?.pages[0].data.restaurants.length === 0 && (
+        <div className='-mt-10 mb-4 px-4 md:-mt-15 md:mb-0 md:px-30'>
+          <span className='text-md-bold md:text-lg-bold text-neutral-950'>
+            No results found for "{search}"
+          </span>
+        </div>
+      )}
+
       {isPending && (
         <div className='mt-10 flex w-full items-center justify-center'>
           <LoadingSpinner className='border-primary-100 mx-auto size-10 border-t-0' />
