@@ -7,5 +7,6 @@ export const useGetProfile = () => {
     queryFn: () => {
       return apiProfile.getProfile();
     },
+    throwOnError: true,
   });
 };

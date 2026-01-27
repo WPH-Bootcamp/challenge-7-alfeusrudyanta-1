@@ -13,6 +13,8 @@ import { selectAddress } from '@/store/slices/address-slice';
 import { setCheckout } from '@/store/slices/checkout-slice';
 import { Button } from '@/components/ui/button';
 import dayjs from 'dayjs';
+import { isPending } from '@reduxjs/toolkit';
+import { LoadingPage } from '@/components/shared/loading-page';
 
 export const CheckoutPage = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,10 @@ export const CheckoutPage = () => {
   const [selectedBank, setSelectedBank] = useState<string>(
     'Bank Negara Indonesia'
   );
+
+  const initialLoading =
+    (checkout.isPending && !checkout.data) ||
+    (profile.isPending && !profile.data);
 
   const restId = Number(id);
   const cartData = cart.data?.data.cart.find(
@@ -90,28 +96,32 @@ export const CheckoutPage = () => {
 
   const isEmpty = !cartData || !cartData.items || cartData.items.length === 0;
 
+  if (initialLoading) {
+    return <LoadingPage />;
+  }
+
   if (isEmpty) {
     return (
-      <div className='px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
-        <div className='flex w-full flex-col items-center justify-center gap-3 md:gap-4'>
-          <div className='flex flex-col gap-1 md:gap-2'>
-            <span className='text-md-bold md:text-lg-bold text-neutral-950'>
-              No items from this restaurant
+      <section className='px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
+        <div className='mx-auto flex w-full max-w-120 flex-col items-center gap-3 md:gap-4'>
+          <div className='flex w-full flex-col gap-1 md:gap-2'>
+            <span className='display-md-extrabold md:display-lg-extrabold text-neutral-950'>
+              Error
             </span>
 
-            <span className='text-sm-regular md:text-md-regular text-neutral-500'>
+            <span className='text-sm-regular md:text-md-regular text-neutral-950'>
               Add items to proceed to checkout
             </span>
           </div>
 
           <Button
-            className='h-9 md:h-10 md:max-w-40'
+            className='h-9 md:h-10'
             onClick={() => router.push('/my-cart')}
           >
             View Cart
           </Button>
         </div>
-      </div>
+      </section>
     );
   }
 

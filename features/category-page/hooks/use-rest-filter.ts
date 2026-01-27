@@ -21,6 +21,7 @@ const useRestFilter = (data: getRestCategory) => {
         ? nextPage
         : undefined;
     },
+    throwOnError: true,
   });
 };
 

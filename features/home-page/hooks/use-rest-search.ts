@@ -22,6 +22,7 @@ const useRestSearch = (q: string) => {
         : undefined;
     },
     enabled: !!trimmedQ && trimmedQ.length > 0,
+    throwOnError: true,
   });
 };
 

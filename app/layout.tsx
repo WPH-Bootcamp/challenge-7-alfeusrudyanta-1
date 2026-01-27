@@ -4,6 +4,8 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import { QueryClientWrapper } from '@/lib/query-client-wrapper';
 import { ReduxProviderWrapper } from '@/lib/redux-provider-wrapper';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorPage } from '@/components/shared/error-page';
 
 const nunito = Nunito({
   variable: '--font-nunito',
@@ -25,13 +27,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn(nunito.variable, 'antialiased')}>
-        <ReduxProviderWrapper>
-          <QueryClientWrapper>
-            <div className='flex min-h-screen flex-col bg-neutral-100'>
-              {children}
-            </div>
-          </QueryClientWrapper>
-        </ReduxProviderWrapper>
+        <ErrorBoundary FallbackComponent={ErrorPage}>
+          <ReduxProviderWrapper>
+            <QueryClientWrapper>
+              <div className='flex min-h-screen flex-col bg-neutral-100'>
+                {children}
+              </div>
+            </QueryClientWrapper>
+          </ReduxProviderWrapper>
+        </ErrorBoundary>
       </body>
     </html>
   );

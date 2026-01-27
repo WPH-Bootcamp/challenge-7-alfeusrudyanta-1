@@ -1,17 +1,16 @@
 import { cn } from '@/lib/utils';
 import { DISTANCE_FILTER, RATING_FILTER } from '../constant/filter-data';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ChangeEventHandler, FormEventHandler } from 'react';
 import { Star } from 'lucide-react';
-import { CheckedState } from '@radix-ui/react-checkbox';
+import { useState } from 'react';
 
 type CategoryFilterProps = {
   showShadow?: boolean;
   isPending: boolean;
   priceMin: number | null;
-  handlePriceMin: ChangeEventHandler<HTMLInputElement>;
+  handlePriceMin: (value: number | null) => void;
   priceMax: number | null;
-  handlePriceMax: ChangeEventHandler<HTMLInputElement>;
+  handlePriceMax: (value: number | null) => void;
   rating: number | null;
   handleRating: (starNumber: number | null) => void;
 };
@@ -26,6 +25,35 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   rating,
   handleRating,
 }) => {
+  const [localPriceMin, setLocalPriceMin] = useState<string>(
+    priceMin?.toString() ?? ''
+  );
+  const [localPriceMax, setLocalPriceMax] = useState<string>(
+    priceMax?.toString() ?? ''
+  );
+
+  const handlePriceMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocalPriceMin(e.target.value);
+  };
+
+  const handlePriceMinKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      const value = localPriceMin === '' ? null : Number(localPriceMin);
+      handlePriceMin(value);
+    }
+  };
+
+  const handlePriceMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLocalPriceMax(e.target.value);
+  };
+
+  const handlePriceMaxKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      const value = localPriceMax === '' ? null : Number(localPriceMax);
+      handlePriceMax(value);
+    }
+  };
+
   const handleCheckboxChange = (starRating: number) => {
     if (rating === starRating) {
       handleRating(null);
@@ -87,8 +115,9 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
             type='number'
             min={0}
             placeholder='Minimum Price'
-            value={priceMin ?? ''}
-            onChange={handlePriceMin}
+            value={localPriceMin}
+            onChange={handlePriceMinChange}
+            onKeyDown={handlePriceMinKeyDown}
             className='md:text-md-regular text-sm-regular h-7 w-[calc(100%-4px)] text-neutral-950 outline-0 md:h-7.5'
           />
         </div>
@@ -107,8 +136,9 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
             type='number'
             min={0}
             placeholder='Maximum Price'
-            value={priceMax ?? ''}
-            onChange={handlePriceMax}
+            value={localPriceMax}
+            onChange={handlePriceMaxChange}
+            onKeyDown={handlePriceMaxKeyDown}
             className='md:text-md-regular text-sm-regular h-7 w-[calc(100%-4px)] text-neutral-950 outline-0 md:h-7.5'
           />
         </div>

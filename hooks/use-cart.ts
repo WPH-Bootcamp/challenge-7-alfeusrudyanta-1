@@ -9,6 +9,7 @@ export const useGetCart = () => {
     queryFn: () => {
       return apiCart.getCart();
     },
+    throwOnError: true,
   });
 };
 

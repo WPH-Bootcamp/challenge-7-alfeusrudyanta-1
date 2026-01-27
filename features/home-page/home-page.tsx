@@ -10,6 +10,7 @@ import { CategoryCard } from './components/category-card';
 import RestaurantCard from '@/components/shared/restaurant-card';
 import { Button } from '@/components/ui/button';
 import { useInView } from 'react-intersection-observer';
+import { LoadingPage } from '@/components/shared/loading-page';
 
 const HomePage = () => {
   const [search, setSearch] = useState<string>('');
@@ -19,7 +20,13 @@ const HomePage = () => {
   const { ref, inView } = useInView({ threshold: 0.8 });
 
   const data = search.length === 0 ? bestSellerRest : searchRest;
-  const isPending = bestSellerRest.isPending || searchRest.isPending;
+
+  const isPending =
+    bestSellerRest.isPending || (searchRest.isPending && search.length !== 0);
+
+  const initialLoading =
+    (bestSellerRest.isPending && !bestSellerRest.data) ||
+    (searchRest.isPending && !searchRest.data && search.length !== 0);
 
   useEffect(() => {
     if (inView && data?.hasNextPage && !data?.isFetchingNextPage) {
@@ -40,6 +47,10 @@ const HomePage = () => {
       data.fetchNextPage();
     }
   };
+
+  if (initialLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <section className='bg-neutral-25 flex w-screen flex-col pb-6 md:gap-12 md:pb-25'>

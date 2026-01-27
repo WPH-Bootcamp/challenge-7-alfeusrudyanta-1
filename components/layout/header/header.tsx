@@ -22,9 +22,10 @@ const Header = () => {
 
   const initialLoad =
     (cart.isPending && !cart.data) || (profile.isPending && !profile.data);
-  const hasError = cart.isError || profile.isError;
 
   useEffect(() => {
+    setIsScrolled(window.scrollY > 0);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
@@ -33,7 +34,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (hasError || initialLoad) {
+  if (initialLoad) {
     return null;
   }
 

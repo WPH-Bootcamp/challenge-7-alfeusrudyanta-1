@@ -1,10 +1,17 @@
 'use client';
 
 import { CartCard } from '@/components/shared/cart-card';
+import { LoadingPage } from '@/components/shared/loading-page';
 import { useGetCart } from '@/hooks/use-cart';
 
 const MyCartPage = () => {
-  const { data } = useGetCart();
+  const { data, isPending } = useGetCart();
+
+  const initialLoading = isPending && !data;
+
+  if (initialLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <section className='bg-neutral-25 px-4 pt-20 pb-10 md:px-80 md:pt-32 md:pb-25'>

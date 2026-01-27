@@ -20,6 +20,7 @@ const useMyOrder = (status: Status) => {
         ? nextPage
         : undefined;
     },
+    throwOnError: true,
   });
 };
 

@@ -3,9 +3,16 @@
 import { ProfileSide } from '@/components/shared/profile-side';
 import { ProfileData } from './components/profile-data';
 import { useGetProfile } from '@/hooks/use-profie';
+import { LoadingPage } from '@/components/shared/loading-page';
 
 const ProfilePage = () => {
-  const { data } = useGetProfile();
+  const { data, isPending } = useGetProfile();
+
+  const initialLoading = isPending && !data;
+
+  if (initialLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <section className='bg-neutral-50 px-4 py-20 pb-12 md:px-30 md:py-32'>

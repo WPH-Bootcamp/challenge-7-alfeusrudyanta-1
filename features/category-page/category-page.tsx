@@ -13,6 +13,7 @@ import {
   SheetDescription,
 } from '@/components/ui/sheet';
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
+import { LoadingPage } from '@/components/shared/loading-page';
 
 const CategoryPage = () => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
@@ -28,6 +29,8 @@ const CategoryPage = () => {
     priceMax,
     rating,
   });
+
+  const initialLoading = isPending && !data;
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,25 +49,21 @@ const CategoryPage = () => {
     setIsSheetOpen((prev) => !prev);
   };
 
-  const handlePriceMin = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPriceMin =
-      Number(e.currentTarget.value) === 0
-        ? null
-        : Number(e.currentTarget.value);
-    setPriceMin(newPriceMin);
+  const handlePriceMin = (e: number | null) => {
+    setPriceMin(e);
   };
 
-  const handlePriceMax = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newPriceMax =
-      Number(e.currentTarget.value) === 0
-        ? null
-        : Number(e.currentTarget.value);
-    setPriceMax(newPriceMax);
+  const handlePriceMax = (e: number | null) => {
+    setPriceMax(e);
   };
 
   const handleRating = (newRating: number | null) => {
     setRating(newRating);
   };
+
+  if (initialLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <section className='bg-neutral-25 w-screen px-4 pt-20 pb-10 md:px-30 md:pt-32 md:pb-25'>
@@ -92,6 +91,12 @@ const CategoryPage = () => {
             <div className='mx-auto mt-10 flex w-full items-center justify-center'>
               <LoadingSpinner className='border-primary-100 mx-auto size-10 border-t-0' />
             </div>
+          )}
+
+          {data?.pages[0].data.restaurants.length === 0 && (
+            <span className='text-sm-semibold md:text-md-semibold w-full text-neutral-950'>
+              No filter result found
+            </span>
           )}
 
           {/* Filter Result */}
