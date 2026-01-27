@@ -22,7 +22,7 @@ const CartCard: React.FC<CartCardProps> = ({
   return (
     <div
       className={cn(
-        'rounded-2xl bg-white p-4 shadow-[0_0_20px_#CBCACA40] md:p-5',
+        'rounded-2xl bg-white p-4 shadow-[0_0_20px_0_#CBCACA40] md:p-5',
         className
       )}
     >

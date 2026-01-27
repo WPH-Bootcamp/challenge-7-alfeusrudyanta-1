@@ -39,8 +39,8 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   return (
     <div
       className={cn(
-        'flex h-fit w-full flex-col gap-3 px-4 py-4 md:w-66.5 md:gap-6',
-        showShadow && 'rounded-xl shadow-[0_0_20px_#CBCACA40]'
+        'flex h-fit w-full flex-col gap-3 bg-white px-4 py-4 md:w-66.5 md:gap-6',
+        showShadow && 'rounded-xl shadow-[0_0_20px_0_#CBCACA40]'
       )}
     >
       {/* Distance */}

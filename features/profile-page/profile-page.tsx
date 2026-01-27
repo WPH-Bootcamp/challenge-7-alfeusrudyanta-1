@@ -8,7 +8,7 @@ const ProfilePage = () => {
   const { data } = useGetProfile();
 
   return (
-    <section className='px-4 py-20 pb-12 md:px-30 md:py-32'>
+    <section className='bg-neutral-50 px-4 py-20 pb-12 md:px-30 md:py-32'>
       <div className='flex md:gap-8'>
         <ProfileSide />
         <div className='flex h-fit w-full flex-col gap-4 md:gap-6'>

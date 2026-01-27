@@ -21,7 +21,7 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
     <div
       ref={ref}
       className={cn(
-        'flex w-60 flex-col gap-6 rounded-2xl bg-white p-5 shadow-[0_0_20px_#CBCACA40]',
+        'flex w-60 flex-col gap-6 rounded-2xl bg-white p-5 shadow-[0_0_20px_0_#CBCACA40]',
         isHover && 'absolute top-13 right-0 w-49.25 gap-3 p-4 md:hidden',
         !isHover && 'hidden h-fit md:flex'
       )}

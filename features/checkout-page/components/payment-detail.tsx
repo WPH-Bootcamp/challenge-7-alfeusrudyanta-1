@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { BANK_DATA } from '../constant/bank-data';
 import { PaymentDetailProps } from '../types/payment-detail';
+import { DashedLine } from '@/components/shared/dashed-line';
 
 export const PaymentDetail: React.FC<PaymentDetailProps> = ({
   totalItem,
@@ -64,7 +65,7 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
         </div>
       ))}
 
-      <div className='w-full border border-dashed border-neutral-300' />
+      <DashedLine />
 
       <div className='flex flex-col gap-3 md:gap-4'>
         <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>

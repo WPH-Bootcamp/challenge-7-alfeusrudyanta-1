@@ -1,6 +1,4 @@
 Important:
-add redux to save data === add date now on checkout page, ITEM: date, payment method, price, delivery fee, service fee, total
-
 page success
 
 search on main page => in case no result, in case of no query return null?

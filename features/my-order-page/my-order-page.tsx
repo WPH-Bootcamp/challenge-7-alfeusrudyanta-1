@@ -3,7 +3,7 @@ import { MyOrderData } from './components/my-order-data';
 
 const MyOrderPage = () => {
   return (
-    <section className='px-4 py-20 pb-12 md:px-30 md:py-32'>
+    <section className='bg-neutral-50 px-4 py-20 pb-12 md:px-30 md:py-32'>
       <div className='flex md:gap-8'>
         <ProfileSide />
 

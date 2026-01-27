@@ -18,7 +18,7 @@ const OrderCard: React.FC<Order> = (order) => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   return (
-    <div className='flex w-full flex-col gap-3 rounded-2xl bg-white p-4 shadow-[0_0_20px_#CBCACA40] md:gap-4 md:p-5'>
+    <div className='flex w-full flex-col gap-3 rounded-2xl bg-white p-4 shadow-[0_0_20px_0_#CBCACA40] md:gap-4 md:p-5'>
       {/* Logo */}
       <Link
         href={`/restaurant/${order.restaurants[0].restaurant.id}`}

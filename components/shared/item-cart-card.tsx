@@ -66,14 +66,16 @@ export const ItemCartCard: React.FC<CartItem> = ({ menu, id, quantity }) => {
 
   return (
     <div key={id} className='flex items-center justify-between'>
-      <div className='flex items-center gap-4.25 overflow-hidden'>
-        <Image
-          src={menu.image}
-          alt={menu.foodName}
-          height={64}
-          width={64}
-          className='size-16 rounded-xl object-cover md:size-20'
-        />
+      <div className='flex items-center gap-4.25'>
+        <div className='flex size-16 items-center justify-center overflow-hidden rounded-xl md:size-20'>
+          <Image
+            src={menu.image}
+            alt={menu.foodName}
+            height={64}
+            width={64}
+            className='size-16 object-contain md:size-20'
+          />
+        </div>
 
         <div className='flex flex-col'>
           <span className='text-sm-medium md:text-md-medium text-neutral-950'>

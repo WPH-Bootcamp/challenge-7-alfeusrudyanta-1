@@ -41,8 +41,8 @@ const Header = () => {
     <div
       className={cn(
         'fixed z-10 flex h-16 w-full items-center justify-between px-4 transition-colors ease-in-out md:h-20 md:px-30',
-        !isHome && 'bg-white shadow-[0_0_20px_#CBCACA40]',
-        isScrolled && 'bg-white shadow-[0_0_20px_#CBCACA40]'
+        !isHome && 'bg-white shadow-[0_0_20px_0_#CBCACA40]',
+        isScrolled && 'bg-white shadow-[0_0_20px_0_#CBCACA40]'
       )}
     >
       <Logo isHome={isHome} isScrolled={isScrolled} />

@@ -3,7 +3,7 @@ import { Profile } from '@/types/api-profile';
 
 const ProfileData: React.FC<Profile> = ({ name, email, phone }) => {
   return (
-    <div className='flex w-full max-w-131 flex-col gap-6 rounded-2xl p-4 shadow-[0_0_20px_#CBCACA40] md:p-5'>
+    <div className='flex w-full max-w-131 flex-col gap-6 rounded-2xl bg-white p-4 shadow-[0_0_20px_0_#CBCACA40] md:p-5'>
       {/* Profile data */}
       <div className='flex flex-col gap-2 md:gap-3'>
         <div className='flex items-center justify-between'>

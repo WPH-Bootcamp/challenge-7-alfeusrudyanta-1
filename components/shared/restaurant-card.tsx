@@ -21,7 +21,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       href={`/restaurant/${id}`}
       className={cn(
         showOutline &&
-          'gap-2 rounded-2xl p-4 shadow-[0_0_20px_#CBCACA40] md:gap-3',
+          'gap-2 rounded-2xl p-4 shadow-[0_0_20px_0_#CBCACA40] md:gap-3',
         'flex items-center gap-2 overflow-hidden bg-white md:gap-3'
       )}
     >

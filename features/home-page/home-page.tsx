@@ -42,7 +42,7 @@ const HomePage = () => {
   };
 
   return (
-    <section className='flex w-screen flex-col pb-6 md:gap-12 md:pb-25'>
+    <section className='bg-neutral-25 flex w-screen flex-col pb-6 md:gap-12 md:pb-25'>
       <HeroSearch key='Hero Search' search={search} setSearch={setSearch} />
 
       {/* Category Cards */}

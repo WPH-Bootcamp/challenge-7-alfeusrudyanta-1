@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={cn(nunito.variable, 'antialiased')}>
         <ReduxProviderWrapper>
           <QueryClientWrapper>
-            <div className='bg-neutral-25 flex min-h-screen flex-col'>
+            <div className='flex min-h-screen flex-col bg-neutral-100'>
               {children}
             </div>
           </QueryClientWrapper>

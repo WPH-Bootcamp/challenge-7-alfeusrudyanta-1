@@ -7,7 +7,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ name, image }) => {
   return (
     <div className='mx-auto w-full max-w-41.25 md:gap-1.5'>
       <Link href={'/category'} className='flex flex-col items-center'>
-        <div className='h-25 w-full rounded-2xl bg-white p-2 shadow-[0_0_20px_#CBCACA40]'>
+        <div className='h-25 w-full rounded-2xl bg-white p-2 shadow-[0_0_20px_0_#CBCACA40]'>
           <Image
             src={image}
             alt={name}

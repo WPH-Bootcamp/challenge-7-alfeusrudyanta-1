@@ -67,7 +67,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <section className='w-screen px-4 pt-20 pb-10 md:px-30 md:pt-32 md:pb-25'>
+    <section className='bg-neutral-25 w-screen px-4 pt-20 pb-10 md:px-30 md:pt-32 md:pb-25'>
       <div className='flex flex-col gap-4 md:gap-8'>
         <span className='display-xs-extrabold md:display-md-extrabold text-neutral-950'>
           All Restaurant
@@ -97,7 +97,7 @@ const CategoryPage = () => {
           {/* Filter Result */}
           {!isPending && (
             <div className='grid h-fit w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5'>
-              <div className='flex items-center justify-between rounded-xl p-4 shadow-[0_0_20px_#CBCACA40] md:hidden'>
+              <div className='flex items-center justify-between rounded-xl p-4 shadow-[0_0_20px_0_#CBCACA40] md:hidden'>
                 <span className='text-sm-extrabold text-neutral-950'>
                   FILTER
                 </span>

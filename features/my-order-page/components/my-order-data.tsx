@@ -37,7 +37,7 @@ const MyOrderData = () => {
     ) ?? [];
 
   return (
-    <div className='flex flex-col gap-5 p-4 md:p-6'>
+    <div className='flex flex-col gap-5 rounded-2xl bg-white p-4 md:p-6'>
       <div className='relative flex h-11 w-full max-w-149.5 items-center gap-1.5 rounded-full border border-neutral-300 bg-white'>
         <Search className='absolute top-1/2 left-4 size-5 -translate-y-1/2 cursor-pointer text-neutral-500 hover:scale-105' />
 

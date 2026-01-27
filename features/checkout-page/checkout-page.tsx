@@ -11,6 +11,8 @@ import { useCheckout } from '@/hooks/use-checkout';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAddress } from '@/store/slices/address-slice';
 import { setCheckout } from '@/store/slices/checkout-slice';
+import { Button } from '@/components/ui/button';
+import dayjs from 'dayjs';
 
 export const CheckoutPage = () => {
   const dispatch = useDispatch();
@@ -37,9 +39,10 @@ export const CheckoutPage = () => {
 
   const diplayedPhoneNumber =
     profile.data?.data.phone.replace(/(\d{4})(?=\d)/g, '$1-') || '';
-  const totalItem = cart.data?.data.summary.totalItems ?? 0;
+  const totalItem =
+    cartData?.items.reduce((total, item) => (total += item.quantity), 0) ?? 0;
 
-  const price = cart.data?.data.summary.totalPrice ?? 0;
+  const price = cartData?.subtotal ?? 0;
   const deliveryFee = 10000;
   const serviceFee = 1000;
   const totalPrice = price + deliveryFee + serviceFee;
@@ -59,6 +62,8 @@ export const CheckoutPage = () => {
         deliveryFee,
         serviceFee,
         totalPrice,
+        totalItem,
+        date: dayjs(Date.now()).format('DD MMMM YYYY, HH:mm'),
       })
     );
 
@@ -83,15 +88,38 @@ export const CheckoutPage = () => {
     });
   };
 
-  if (cartData === undefined) {
-    return null;
+  const isEmpty = !cartData || !cartData.items || cartData.items.length === 0;
+
+  if (isEmpty) {
+    return (
+      <div className='px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
+        <div className='flex w-full flex-col items-center justify-center gap-3 md:gap-4'>
+          <div className='flex flex-col gap-1 md:gap-2'>
+            <span className='text-md-bold md:text-lg-bold text-neutral-950'>
+              No items from this restaurant
+            </span>
+
+            <span className='text-sm-regular md:text-md-regular text-neutral-500'>
+              Add items to proceed to checkout
+            </span>
+          </div>
+
+          <Button
+            className='h-9 md:h-10 md:max-w-40'
+            onClick={() => router.push('/my-cart')}
+          >
+            View Cart
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className='px-4 pt-20 pb-12 md:px-55 md:pt-32 md:pb-25'>
       <div className='flex flex-col gap-4 md:gap-6'>
         <span className='display-xs-extrabold md:display-md-extrabold text-neutral-950'>
-          CheckoutPage
+          Checkout Page
         </span>
 
         <div className='flex h-fit flex-col gap-4 md:flex-row md:gap-5'>
@@ -106,7 +134,7 @@ export const CheckoutPage = () => {
           </div>
 
           {/* Right */}
-          <div className='flex h-fit w-full shrink-0 flex-col gap-4 rounded-2xl bg-white p-4 py-4 shadow-[0_0_20px_#CBCACA40] md:w-97.5 md:flex-row md:py-5'>
+          <div className='flex h-fit w-full shrink-0 flex-col gap-4 rounded-2xl bg-white p-4 py-4 shadow-[0_0_20px_0_#CBCACA40] md:w-97.5 md:flex-row md:py-5'>
             <PaymentDetail
               totalItem={totalItem}
               price={price}

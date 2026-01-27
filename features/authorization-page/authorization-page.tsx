@@ -42,7 +42,7 @@ const AuthorizationPage = () => {
       </div>
 
       {/* Right */}
-      <div className='my-10 flex w-full items-center justify-center md:w-1/2'>
+      <div className='my-10 flex w-full items-center justify-center bg-white md:w-1/2'>
         <div className='mx-6 flex w-full max-w-93.5 flex-col gap-4 md:gap-5'>
           {/* Logo */}
           <div className='flex items-center gap-3 md:gap-3.75'>

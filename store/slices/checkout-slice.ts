@@ -7,14 +7,18 @@ type CheckoutState = {
   deliveryFee: number;
   serviceFee: number;
   totalPrice: number;
+  totalItem: number;
+  date: string;
 };
 
 const initialState: CheckoutState = {
-  selectedBank: 'Bank Negara Indonesia',
+  selectedBank: '',
   price: 0,
   deliveryFee: 0,
   serviceFee: 0,
   totalPrice: 0,
+  totalItem: 0,
+  date: '',
 };
 
 const checkoutSlice = createSlice({
