@@ -44,7 +44,7 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
 
       <div className='w-full border border-neutral-200' />
 
-      <Link href={'/profile'} className='group flex items-center gap-2'>
+      <Link href={'/address'} className='group flex items-center gap-2'>
         <MapPin className='group-hover:text-primary-100 size-6 text-neutral-950' />
         <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950'>
           Delivery Address

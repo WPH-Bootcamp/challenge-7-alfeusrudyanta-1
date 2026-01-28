@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { DeliveryDetailProps } from '../types/delivery-detail';
+import { ChangeAddressOverlay } from '@/components/shared/change-address-overlay';
 
 export const DeliveryDetail: React.FC<DeliveryDetailProps> = ({
   address,
@@ -32,9 +33,11 @@ export const DeliveryDetail: React.FC<DeliveryDetailProps> = ({
         </span>
       </div>
 
-      <Button variant='empty' className='h-9 w-30 md:h-10'>
-        Change
-      </Button>
+      <ChangeAddressOverlay>
+        <Button variant='empty' className='h-9 w-30 md:h-10'>
+          Change
+        </Button>
+      </ChangeAddressOverlay>
     </div>
   );
 };
