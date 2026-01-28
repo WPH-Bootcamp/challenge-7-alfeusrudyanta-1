@@ -61,10 +61,10 @@ const ProfileData: React.FC<Profile> = ({ name, email, phone, avatar }) => {
           <DialogTitle></DialogTitle>
           <DialogDescription></DialogDescription>
           <DialogData
-            email={email}
-            name={name}
-            phone={phone}
-            avatar={avatar}
+            originalEmail={email}
+            originalName={name}
+            originalPhone={phone}
+            originalAvatar={avatar}
             onClose={() => setIsDialogOpen(false)}
           />
         </DialogContent>

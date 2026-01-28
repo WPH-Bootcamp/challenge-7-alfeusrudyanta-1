@@ -7,27 +7,28 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 
 type DialogDataProps = {
-  name: string;
-  email: string;
-  phone: string;
-  avatar: string;
+  originalEmail: string;
+  originalName: string;
+  originalPhone: string;
+  originalAvatar: string;
   onClose: () => void;
 };
 
 export const DialogData: React.FC<DialogDataProps> = ({
-  email,
-  name,
-  phone,
-  avatar,
+  originalEmail,
+  originalName,
+  originalPhone,
+  originalAvatar,
   onClose,
 }) => {
   const { mutate, isPending } = usePutProfile();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [currentName, setCurrentName] = useState<string>(name);
-  const [currentEmail, setCurrentEmail] = useState<string>(email);
-  const [currentPhone, setCurrentPhone] = useState<string>(phone);
-  const [avatarPreview, setAvatarPreview] = useState<string>(avatar);
+  const [name, setName] = useState<string>(originalName);
+  const [email, setEmail] = useState<string>(originalEmail);
+  const [phone, setPhone] = useState<string>(originalPhone);
+  const [avatar, setAvatar] = useState<File | undefined>(undefined);
+  const [avatarPreview, setAvatarPreview] = useState<string>(originalAvatar);
   const [error, setError] = useState<string>('');
 
   const formatPhoneNumber = (value: string) => {
@@ -35,22 +36,43 @@ export const DialogData: React.FC<DialogDataProps> = ({
     return numbers;
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError('Image size must be less than 5MB');
+      return;
+    }
+
+    if (!file.type.startsWith('image/')) {
+      setError('Please upload an image file');
+      return;
+    }
+
+    setAvatar(file);
+    setError('');
+
+    const previewUrl = URL.createObjectURL(file);
+    setAvatarPreview(previewUrl);
+  };
+
   const handlePutProfile = () => {
-    mutate(
-      {
-        email: currentEmail,
-        name: currentName,
-        phone: currentPhone,
+    const data = {
+      email,
+      name,
+      phone,
+      avatar,
+    };
+
+    mutate(data, {
+      onSuccess: () => {
+        onClose();
       },
-      {
-        onSuccess: () => {
-          onClose();
-        },
-        onError: () => {
-          setError('Incorrect data provided');
-        },
-      }
-    );
+      onError: () => {
+        setError('Incorrect data provided');
+      },
+    });
   };
 
   return (
@@ -60,14 +82,23 @@ export const DialogData: React.FC<DialogDataProps> = ({
       </span>
 
       <div className='flex flex-col gap-3 md:gap-4'>
-        <div className='relative mx-auto mb-2 overflow-hidden rounded-full'>
+        <div className='relative mx-auto mb-2 cursor-pointer overflow-hidden rounded-full'>
           <Image
             src={avatarPreview ?? '/images/user.png'}
-            alt={name}
+            alt={originalName}
             height={40}
             width={40}
             onClick={() => fileInputRef.current?.click()}
             className='h-18 w-18 object-cover md:h-20 md:w-20'
+          />
+
+          <input
+            type='file'
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept='image/*'
+            id='avatar-upload'
+            className='hidden'
           />
         </div>
 
@@ -80,8 +111,8 @@ export const DialogData: React.FC<DialogDataProps> = ({
             id='name'
             type='text'
             placeholder='Name'
-            value={currentName}
-            onChange={(e) => setCurrentName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className='text-sm-bold md:text-md-bold focus:border-primary-100 focus:ring-primary-100/20 w-full rounded-xl border border-neutral-300 px-2 text-neutral-950 focus-within:outline-0 focus:ring-1 focus:outline-none'
           />
         </label>
@@ -95,8 +126,8 @@ export const DialogData: React.FC<DialogDataProps> = ({
             id='email'
             type='text'
             placeholder='Email'
-            value={currentEmail}
-            onChange={(e) => setCurrentEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className='text-sm-bold md:text-md-bold focus:border-primary-100 focus:ring-primary-100/20 w-full rounded-xl border border-neutral-300 px-2 text-neutral-950 focus-within:outline-0 focus:ring-1 focus:outline-none'
           />
         </label>
@@ -109,10 +140,10 @@ export const DialogData: React.FC<DialogDataProps> = ({
           <input
             id='phone'
             type='tel'
-            value={currentPhone}
+            value={phone}
             maxLength={14}
             placeholder='Phone Number'
-            onChange={(e) => setCurrentPhone(formatPhoneNumber(e.target.value))}
+            onChange={(e) => setPhone(formatPhoneNumber(e.target.value))}
             className='text-sm-bold md:text-md-bold focus:border-primary-100 focus:ring-primary-100/20 w-full rounded-xl border border-neutral-300 px-2 text-neutral-950 focus-within:outline-0 focus:ring-1 focus:outline-none'
           />
         </label>
