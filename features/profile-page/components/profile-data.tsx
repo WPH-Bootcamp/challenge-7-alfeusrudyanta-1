@@ -1,7 +1,23 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
+import { usePutProfile } from '@/hooks/use-profie';
 import { Profile } from '@/types/api-profile';
+import { useState } from 'react';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import { DialogData } from './dialog-data';
 
 const ProfileData: React.FC<Profile> = ({ name, email, phone }) => {
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+
+  const { mutate } = usePutProfile();
+
   return (
     <div className='flex w-full max-w-131 flex-col gap-6 rounded-2xl bg-white p-4 shadow-[0_0_20px_0_#CBCACA40] md:p-5'>
       {/* Profile data */}
@@ -37,7 +53,21 @@ const ProfileData: React.FC<Profile> = ({ name, email, phone }) => {
         </div>
       </div>
 
-      <Button className='h-11'>Update Profile</Button>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
+          <Button className='h-11'>Update Profile</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogTitle></DialogTitle>
+          <DialogDescription></DialogDescription>
+          <DialogData
+            email={email}
+            name={name}
+            phone={phone}
+            onClose={() => setIsDialogOpen(false)}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
