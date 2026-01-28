@@ -5,12 +5,13 @@ import { useGetRest } from './hooks/use-rest';
 import { LoadingPage } from '@/components/shared/loading-page';
 import { Button } from '@/components/ui/button';
 import RestaurantCard from '@/components/shared/restaurant-card';
-import { Share2 } from 'lucide-react';
+import { Circle, Share2 } from 'lucide-react';
 import { useState } from 'react';
 import { MENU_FILTER } from './consant/menu-filter';
 import { cn } from '@/lib/utils';
 import { MenuCart } from './components/menu-card';
-import { useGetCart } from '@/hooks/use-cart';
+import { ImagesData } from './components/images-data';
+import { ReviewData } from './components/review-data';
 
 const RestaurantPage = () => {
   const router = useRouter();
@@ -18,6 +19,8 @@ const RestaurantPage = () => {
 
   const { data, isPending } = useGetRest(Number(id));
 
+  const [mobileImageIndex, setMobileImageIndex] = useState<number>(0);
+  const [menuLimit, setMenuLimit] = useState<number | undefined>(6);
   const [filter, setFilter] = useState<string>('All Menu');
 
   const initialLoad = isPending && !data;
@@ -50,18 +53,39 @@ const RestaurantPage = () => {
     );
   }
 
-  const filteredMenu = data?.data.menus.filter((menu) => {
-    if (filter === 'All Menu') {
-      return true;
-    }
-    return menu.type === filter.toLowerCase();
-  });
+  const filteredMenu = data?.data.menus
+    .filter((menu) => {
+      if (filter === 'All Menu') {
+        return true;
+      }
+      return menu.type === filter.toLowerCase();
+    })
+    .slice(0, menuLimit);
 
   return (
     <section className='bg-neutral-25 h-auto px-4 pt-20 pb-10 md:px-30 md:pt-32 md:pb-12'>
       <div className='flex flex-col gap-4 md:gap-8'>
         {/* Images */}
-        <div></div>
+        <div className='flex flex-col items-center justify-center gap-3'>
+          <ImagesData
+            mobileImageIndex={mobileImageIndex}
+            name={data.data.name}
+            images={data.data.images}
+          />
+
+          <div className='flex items-center gap-1 md:hidden'>
+            {[0, 1, 2, 3].map((value) => (
+              <Circle
+                key={value}
+                onClick={() => setMobileImageIndex(value)}
+                className={cn(
+                  'size-2 cursor-pointer fill-[#d9d9d9] stroke-0',
+                  mobileImageIndex === value && 'fill-primary-100'
+                )}
+              />
+            ))}
+          </div>
+        </div>
 
         {/* Name */}
         <div className='flex items-center justify-between'>
@@ -110,12 +134,25 @@ const RestaurantPage = () => {
               <MenuCart key={menu.id} restaurantId={data.data.id} {...menu} />
             ))}
           </div>
+
+          {filteredMenu.length > 6 && (
+            <Button
+              onClick={() => setMenuLimit(undefined)}
+              variant='empty'
+              className='mx-auto h-10 max-w-40 md:h-12'
+            >
+              Show More
+            </Button>
+          )}
         </div>
 
         <div className='w-full border border-neutral-300' />
 
         {/* Review */}
-        <div></div>
+        <ReviewData
+          restaurantId={Number(id)}
+          rating={data.data.averageRating}
+        />
       </div>
     </section>
   );
