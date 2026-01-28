@@ -19,7 +19,7 @@ export const ReviewCard: React.FC<Review> = ({
           alt={user.name}
           height={58}
           width={58}
-          className='size-14.5 rounded-full md:size-16'
+          className='size-14.5 rounded-full object-cover md:size-16'
         />
 
         <div className='flex flex-col'>

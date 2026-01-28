@@ -106,15 +106,17 @@ export const MenuCart: React.FC<MenuCartProps> = ({
   };
 
   return (
-    <div className='flex flex-col overflow-hidden rounded-2xl shadow-[0_0_20px_0_#CBCACA40]'>
-      <Image
-        src={image}
-        alt={foodName}
-        height={172.5}
-        width={172.5}
-        loading='lazy'
-        className='aspect-square h-full w-auto'
-      />
+    <div className='flex flex-col justify-between overflow-hidden rounded-2xl shadow-[0_0_20px_0_#CBCACA40]'>
+      <div className='h-43.25 w-full md:h-71.25'>
+        <Image
+          src={image}
+          alt={foodName}
+          height={172.5}
+          width={172.5}
+          loading='lazy'
+          className='size-full object-cover object-center'
+        />
+      </div>
 
       <div className='flex flex-col gap-4 p-3 md:flex-row md:items-center md:justify-between md:p-4'>
         <div className='flex flex-col'>

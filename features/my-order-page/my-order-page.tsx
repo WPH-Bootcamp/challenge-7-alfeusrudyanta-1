@@ -19,11 +19,13 @@ const MyOrderPage = () => {
       <div className='flex md:gap-8'>
         <ProfileSide />
 
-        <div className='flex h-fit w-full flex-col gap-4 md:gap-6'>
-          <span className='md:display-md-extrabold display-xs-extrabold text-neutral-950'>
-            My Orders
-          </span>
-          <MyOrderData />
+        <div className='min-w-0 flex-1'>
+          <div className='flex h-fit w-full flex-col gap-4 md:gap-6'>
+            <span className='md:display-md-extrabold display-xs-extrabold text-neutral-950'>
+              My Orders
+            </span>
+            <MyOrderData />
+          </div>
         </div>
       </div>
     </section>

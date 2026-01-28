@@ -1,3 +1,8 @@
+export type DistanceFilter = {
+  text: string;
+  range: number;
+};
+
 export type InfiniteReq = {
   page: number;
   limit: number;

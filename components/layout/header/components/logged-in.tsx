@@ -55,7 +55,7 @@ const LoggedIn: React.FC<LoggedInProps> = ({ isScrolled, cart, profile }) => {
           alt='Bag Icon'
           height={28}
           width={28}
-          className='cursor-pointer md:size-8'
+          className='cursor-pointer object-cover md:size-8'
         />
 
         {cart && cart.data.summary.restaurantCount > 0 && (
@@ -73,7 +73,7 @@ const LoggedIn: React.FC<LoggedInProps> = ({ isScrolled, cart, profile }) => {
             alt='User Profile Picture'
             height={40}
             width={40}
-            className='size-10 rounded-full md:size-12'
+            className='size-10 rounded-full object-cover md:size-12'
           />
 
           <span

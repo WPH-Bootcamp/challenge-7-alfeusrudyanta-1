@@ -33,7 +33,7 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
             alt='User Profile Picture'
             height={36}
             width={36}
-            className='size-9 rounded-full md:size-12'
+            className='size-9 rounded-full object-cover md:size-12'
           />
 
           <span className='text-md-bold md:text-lg-bold group-hover:text-primary-100 truncate text-wrap text-neutral-950'>

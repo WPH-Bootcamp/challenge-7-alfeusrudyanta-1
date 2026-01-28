@@ -17,6 +17,7 @@ import { LoadingPage } from '@/components/shared/loading-page';
 
 const CategoryPage = () => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
+  const [range, setRange] = useState<number | null>(null);
   const [priceMin, setPriceMin] = useState<number | null>(null);
   const [priceMax, setPriceMax] = useState<number | null>(null);
   const [rating, setRating] = useState<number | null>(null);
@@ -24,7 +25,7 @@ const CategoryPage = () => {
   const { data, isPending } = useRestFilter({
     category: null,
     location: null,
-    range: null,
+    range,
     priceMin,
     priceMax,
     rating,
@@ -78,6 +79,8 @@ const CategoryPage = () => {
             <CategoryFilter
               showShadow={true}
               isPending={isPending}
+              range={range}
+              setRange={setRange}
               priceMin={priceMin}
               handlePriceMin={handlePriceMin}
               priceMax={priceMax}
@@ -101,7 +104,7 @@ const CategoryPage = () => {
 
           {/* Filter Result */}
           {!isPending && (
-            <div className='grid h-fit w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5'>
+            <div className='grid h-fit w-full grid-cols-1 gap-4 md:gap-5 lg:grid-cols-2'>
               <div className='flex items-center justify-between rounded-xl p-4 shadow-[0_0_20px_0_#CBCACA40] md:hidden'>
                 <span className='text-sm-extrabold text-neutral-950'>
                   FILTER
@@ -115,8 +118,10 @@ const CategoryPage = () => {
                     <SheetTitle></SheetTitle>
                     <SheetDescription></SheetDescription>
                     <CategoryFilter
-                      showShadow={false}
+                      showShadow={true}
                       isPending={isPending}
+                      range={range}
+                      setRange={setRange}
                       priceMin={priceMin}
                       handlePriceMin={handlePriceMin}
                       priceMax={priceMax}

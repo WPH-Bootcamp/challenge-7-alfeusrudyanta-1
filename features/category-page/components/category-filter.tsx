@@ -7,6 +7,8 @@ import { useState } from 'react';
 type CategoryFilterProps = {
   showShadow?: boolean;
   isPending: boolean;
+  range: number | null;
+  setRange: (value: number | null) => void;
   priceMin: number | null;
   handlePriceMin: (value: number | null) => void;
   priceMax: number | null;
@@ -18,6 +20,8 @@ type CategoryFilterProps = {
 const CategoryFilter: React.FC<CategoryFilterProps> = ({
   showShadow = false,
   isPending,
+  range,
+  setRange,
   priceMin,
   handlePriceMin,
   priceMax,
@@ -31,6 +35,15 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   const [localPriceMax, setLocalPriceMax] = useState<string>(
     priceMax?.toString() ?? ''
   );
+
+  const handleRangeChange = (selectedRange: number) => {
+    if (range === selectedRange) {
+      setRange(null);
+      return;
+    }
+
+    setRange(selectedRange);
+  };
 
   const handlePriceMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocalPriceMin(e.target.value);
@@ -83,12 +96,20 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
         {DISTANCE_FILTER.map((distance) => (
           <label
-            key={distance}
-            htmlFor={distance}
+            key={distance.text}
+            htmlFor={distance.text}
             className='text-sm-regular md:text-md-regular flex cursor-pointer items-center gap-2 text-neutral-950'
           >
-            <Checkbox id={distance} name={distance} disabled={isPending} />
-            {distance}
+            <Checkbox
+              checked={distance.range <= (range ?? -1)}
+              onCheckedChange={() => {
+                handleRangeChange(distance.range);
+              }}
+              id={distance.text}
+              name={distance.text}
+              disabled={isPending}
+            />
+            {distance.text}
           </label>
         ))}
       </div>
