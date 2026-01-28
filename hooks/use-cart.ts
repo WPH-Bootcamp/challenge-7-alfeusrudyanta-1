@@ -2,6 +2,9 @@ import { apiCart } from '@/api/api-cart';
 import { queryClient } from '@/lib/query-client-wrapper';
 import { PostCartReq, PutCartReq } from '@/types/api-cart';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
+
+const isLoggedIn = Cookies.get('token');
 
 export const useGetCart = () => {
   return useQuery({
@@ -10,6 +13,7 @@ export const useGetCart = () => {
       return apiCart.getCart();
     },
     throwOnError: true,
+    enabled: !!isLoggedIn,
   });
 };
 

@@ -13,6 +13,7 @@ import { useGetProfile } from '@/hooks/use-profie';
 const Header = () => {
   const pathName = usePathname();
   const { isLoggedIn } = useAuth();
+
   const cart = useGetCart();
   const profile = useGetProfile();
 
@@ -34,7 +35,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (initialLoad) {
+  if (isLoggedIn && initialLoad) {
     return null;
   }
 

@@ -1,6 +1,9 @@
 import { apiProfile } from '@/api/api-profile';
 import { PutProfileReq } from '@/types/api-profile';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
+
+const isLoggedIn = Cookies.get('token');
 
 export const useGetProfile = () => {
   return useQuery({
@@ -9,6 +12,7 @@ export const useGetProfile = () => {
       return apiProfile.getProfile();
     },
     throwOnError: true,
+    enabled: !!isLoggedIn,
   });
 };
 
