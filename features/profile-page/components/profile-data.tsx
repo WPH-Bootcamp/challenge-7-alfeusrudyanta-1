@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/dialog';
 import { DialogData } from './dialog-data';
 
-const ProfileData: React.FC<Profile> = ({ name, email, phone }) => {
+const ProfileData: React.FC<Profile> = ({ name, email, phone, avatar }) => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   const { mutate } = usePutProfile();
@@ -64,6 +64,7 @@ const ProfileData: React.FC<Profile> = ({ name, email, phone }) => {
             email={email}
             name={name}
             phone={phone}
+            avatar={avatar}
             onClose={() => setIsDialogOpen(false)}
           />
         </DialogContent>

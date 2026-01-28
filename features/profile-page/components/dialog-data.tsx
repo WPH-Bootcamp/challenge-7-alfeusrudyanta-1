@@ -3,12 +3,14 @@
 import { LoadingSpinner } from '@/components/shared/loading-spinner';
 import { Button } from '@/components/ui/button';
 import { usePutProfile } from '@/hooks/use-profie';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import Image from 'next/image';
 
 type DialogDataProps = {
   name: string;
   email: string;
   phone: string;
+  avatar: string;
   onClose: () => void;
 };
 
@@ -16,13 +18,16 @@ export const DialogData: React.FC<DialogDataProps> = ({
   email,
   name,
   phone,
+  avatar,
   onClose,
 }) => {
   const { mutate, isPending } = usePutProfile();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [currentName, setCurrentName] = useState<string>(name);
   const [currentEmail, setCurrentEmail] = useState<string>(email);
   const [currentPhone, setCurrentPhone] = useState<string>(phone);
+  const [avatarPreview, setAvatarPreview] = useState<string>(avatar);
   const [error, setError] = useState<string>('');
 
   const formatPhoneNumber = (value: string) => {
@@ -32,7 +37,11 @@ export const DialogData: React.FC<DialogDataProps> = ({
 
   const handlePutProfile = () => {
     mutate(
-      { email: currentEmail, name: currentName, phone: currentPhone },
+      {
+        email: currentEmail,
+        name: currentName,
+        phone: currentPhone,
+      },
       {
         onSuccess: () => {
           onClose();
@@ -51,8 +60,19 @@ export const DialogData: React.FC<DialogDataProps> = ({
       </span>
 
       <div className='flex flex-col gap-3 md:gap-4'>
+        <div className='relative mx-auto mb-2 overflow-hidden rounded-full'>
+          <Image
+            src={avatarPreview ?? '/images/user.png'}
+            alt={name}
+            height={40}
+            width={40}
+            onClick={() => fileInputRef.current?.click()}
+            className='h-18 w-18 object-cover md:h-20 md:w-20'
+          />
+        </div>
+
         <label htmlFor='name' className='flex items-center'>
-          <span className='text-sm-medium md:text-md-medium min-w-11xl text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium min-w-30 text-neutral-950'>
             Name
           </span>
 
@@ -67,7 +87,7 @@ export const DialogData: React.FC<DialogDataProps> = ({
         </label>
 
         <label htmlFor='email' className='flex items-center'>
-          <span className='text-sm-medium md:text-md-medium min-w-11xl text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium min-w-30 text-neutral-950'>
             Email
           </span>
 
@@ -82,7 +102,7 @@ export const DialogData: React.FC<DialogDataProps> = ({
         </label>
 
         <label htmlFor='phone' className='flex items-center'>
-          <span className='text-sm-medium md:text-md-medium min-w-11xl text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium min-w-30 text-neutral-950'>
             Phone Number
           </span>
 
