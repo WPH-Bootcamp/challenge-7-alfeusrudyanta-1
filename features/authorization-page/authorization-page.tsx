@@ -65,7 +65,7 @@ const AuthorizationPage = () => {
             <span className='display-xs-extrabold md:display-sm-extrabold text-neutral-950'>
               Welcome Back
             </span>
-            <span className='md:text-md-medium text-sm-medium text-neutral-950'>
+            <span className='md:text-md-medium text-sm-medium text-neutral-950 md:tracking-[0.03em]'>
               Good to see you again! Let’s eat
             </span>
           </div>

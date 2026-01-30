@@ -34,7 +34,7 @@ const OrderCard: React.FC<Order> = (order) => {
           />
         </div>
 
-        <span className='text-sm-bold md:text-lg-bold text-neutral-950'>
+        <span className='text-sm-bold md:text-lg-bold tracking-[-0.03em] text-neutral-950 md:tracking-[-0.02em]'>
           {order.restaurants[0].restaurant.name}
         </span>
       </Link>
@@ -57,7 +57,7 @@ const OrderCard: React.FC<Order> = (order) => {
             </div>
 
             <div className='flex flex-col'>
-              <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+              <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
                 {menu.menuName}
               </span>
 
@@ -74,7 +74,7 @@ const OrderCard: React.FC<Order> = (order) => {
       {/* Total */}
       <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
         <div className='flex flex-col'>
-          <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
             Total
           </span>
 

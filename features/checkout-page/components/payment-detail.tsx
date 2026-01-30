@@ -17,7 +17,7 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
 }) => {
   return (
     <div className='flex w-full flex-col gap-3 md:gap-4'>
-      <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+      <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
         Payment Method
       </span>
 
@@ -42,7 +42,7 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
                 />
               </div>
 
-              <span className='text-sm-regular md:text-md-regular text-neutral-950'>
+              <span className='text-sm-regular md:text-md-regular tracking-[-0.02em] text-neutral-950'>
                 {bank.display}
               </span>
             </div>
@@ -68,33 +68,33 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
       <DashedLine />
 
       <div className='flex flex-col gap-3 md:gap-4'>
-        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
           Payment Summary
         </span>
 
         <div className='flex items-center justify-between gap-4'>
-          <span className='md:text-md-medium text-sm-medium text-neutral-950'>
+          <span className='md:text-md-medium text-sm-medium text-neutral-950 md:tracking-[-0.03em]'>
             Price ({totalItem} item{totalItem > 1 && 's'})
           </span>
-          <span className='md:text-md-bold text-sm-bold text-neutral-950'>
+          <span className='md:text-md-bold text-sm-bold tracking-[-0.02em] text-neutral-950'>
             Rp{price.toLocaleString('id-ID')}
           </span>
         </div>
 
         <div className='flex items-center justify-between gap-4'>
-          <span className='md:text-md-medium text-sm-medium text-neutral-950'>
+          <span className='md:text-md-medium text-sm-medium text-neutral-950 md:tracking-[-0.03em]'>
             Delivery Fee
           </span>
-          <span className='md:text-md-bold text-sm-bold text-neutral-950'>
+          <span className='md:text-md-bold text-sm-bold tracking-[-0.02em] text-neutral-950'>
             Rp{deliveryFee.toLocaleString('id-ID')}
           </span>
         </div>
 
         <div className='flex items-center justify-between gap-4'>
-          <span className='md:text-md-medium text-sm-medium text-neutral-950'>
+          <span className='md:text-md-medium text-sm-medium text-neutral-950 md:tracking-[-0.03em]'>
             Service Fee
           </span>
-          <span className='md:text-md-bold text-sm-bold text-neutral-950'>
+          <span className='md:text-md-bold text-sm-bold tracking-[-0.02em] text-neutral-950'>
             Rp{serviceFee.toLocaleString('id-ID')}
           </span>
         </div>
@@ -103,7 +103,7 @@ export const PaymentDetail: React.FC<PaymentDetailProps> = ({
           <span className='md:text-md-medium text-sm-medium text-neutral-950'>
             Total
           </span>
-          <span className='md:text-lg-extrabold text-md-extrabold text-neutral-950'>
+          <span className='md:text-lg-extrabold text-md-extrabold text-neutral-950 md:tracking-[-0.02em]'>
             Rp{totalPrice.toLocaleString('id-ID')}
           </span>
         </div>

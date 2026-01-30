@@ -72,7 +72,7 @@ const HomePage = () => {
 
           <span
             onClick={handleSeeAll}
-            className='text-md-extrabold text-primary-100 md:text-lg-extrabold cursor-pointer hover:underline'
+            className='text-md-extrabold text-primary-100 md:text-lg-extrabold cursor-pointer hover:underline md:tracking-[-0.02em]'
           >
             See All
           </span>

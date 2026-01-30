@@ -78,7 +78,7 @@ const LoggedIn: React.FC<LoggedInProps> = ({ isScrolled, cart, profile }) => {
 
           <span
             className={cn(
-              'text-lg-semibold hidden text-neutral-950 md:block',
+              'text-lg-semibold hidden text-neutral-950 md:block md:tracking-[-0.02em]',
               isHome && 'text-white',
               isScrolled && 'text-neutral-950'
             )}

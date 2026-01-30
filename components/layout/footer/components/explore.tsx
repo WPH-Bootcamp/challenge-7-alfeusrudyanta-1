@@ -13,7 +13,7 @@ const Explore = () => {
           <Link
             href='/category'
             key={value}
-            className='text-neutral-25 hover:text-primary-100 md:text-md-regular text-sm-regular'
+            className='text-neutral-25 hover:text-primary-100 md:text-md-regular text-sm-regular tracking-[-0.02em]'
           >
             <span>{value}</span>
           </Link>

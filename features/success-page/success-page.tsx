@@ -36,11 +36,11 @@ export const SuccessPage = () => {
               className='size-16'
             />
 
-            <span className='text-lg-extrabold md:text-xl-extrabold text-neutral-950'>
+            <span className='text-lg-extrabold md:text-xl-extrabold tracking-[-0.02em] text-neutral-950 md:tracking-normal'>
               Payment Success
             </span>
 
-            <span className='text-sm-regular md:text-md-regular text-neutral-950'>
+            <span className='text-sm-regular md:text-md-regular tracking-[-0.02em] text-neutral-950'>
               Your payment has been successfully processed.
             </span>
           </div>
@@ -51,46 +51,46 @@ export const SuccessPage = () => {
           />
 
           <div className='flex items-center justify-between'>
-            <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+            <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
               Date
             </span>
-            <span className='text-sm-semibold md:text-md-bold text-neutral-950'>
+            <span className='text-sm-semibold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
               {checkout.date}
             </span>
           </div>
 
           <div className='flex items-center justify-between'>
-            <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+            <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
               Payment Method
             </span>
-            <span className='text-sm-semibold md:text-md-bold text-neutral-950'>
+            <span className='text-sm-semibold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
               {checkout.selectedBank}
             </span>
           </div>
 
           <div className='flex items-center justify-between'>
-            <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+            <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
               Price ( {checkout.totalItem} item{checkout.totalItem > 1 && 's'})
             </span>
-            <span className='text-sm-semibold md:text-md-bold text-neutral-950'>
+            <span className='text-sm-semibold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
               Rp{checkout.price.toLocaleString('id-ID')}
             </span>
           </div>
 
           <div className='flex items-center justify-between'>
-            <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+            <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
               Delivery Fee
             </span>
-            <span className='text-sm-semibold md:text-md-bold text-neutral-950'>
+            <span className='text-sm-semibold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
               Rp{checkout.deliveryFee.toLocaleString('id-ID')}
             </span>
           </div>
 
           <div className='flex items-center justify-between'>
-            <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+            <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
               Service Fee
             </span>
-            <span className='text-sm-semibold md:text-md-bold text-neutral-950'>
+            <span className='text-sm-semibold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
               Rp{checkout.serviceFee.toLocaleString('id-ID')}
             </span>
           </div>
@@ -101,10 +101,10 @@ export const SuccessPage = () => {
           />
 
           <div className='flex items-center justify-between'>
-            <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+            <span className='text-sm-medium md:text-md-medium tracking-[-0.02em] text-neutral-950 md:tracking-normal'>
               Total
             </span>
-            <span className='md:text-md text-sm font-bold text-neutral-950'>
+            <span className='md:text-md text-sm font-bold text-neutral-950 md:tracking-[-0.02em]'>
               Rp{checkout.totalPrice.toLocaleString('id-ID')}
             </span>
           </div>

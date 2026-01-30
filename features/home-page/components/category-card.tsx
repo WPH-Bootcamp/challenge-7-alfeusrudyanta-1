@@ -17,7 +17,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ name, image }) => {
             className='mx-auto size-12 md:size-16.25'
           />
         </div>
-        <p className='text-sm-bold md:text-lg-bold text-center text-neutral-950'>
+        <p className='text-sm-bold md:text-lg-bold text-center tracking-[-0.02em] text-neutral-950 md:tracking-[-0.03em]'>
           {name}
         </p>
       </Link>

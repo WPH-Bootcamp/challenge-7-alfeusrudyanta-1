@@ -23,9 +23,9 @@ const HeroSearch: React.FC<HeroSearchProps> = ({ search, setSearch }) => {
           <h1 className='display-lg-extrabold md:display-2xl-extrabold text-white'>
             Explore Culinary Experiences
           </h1>
-          <p className='text-lg-bold md:display-xs-bold text-white'>
+          <span className='text-lg-bold md:display-xs-bold tracking-[-0.03em] text-white md:tracking-normal'>
             Search and refine your choice to discover the perfect restaurant.
-          </p>
+          </span>
         </div>
 
         {/* Search Bar */}
@@ -37,7 +37,7 @@ const HeroSearch: React.FC<HeroSearchProps> = ({ search, setSearch }) => {
             value={search}
             placeholder='Search restaurants, food and drink'
             onChange={(e) => setSearch(e.currentTarget.value)}
-            className='text-sm-regular md:text-md-regular mr-4 ml-10.5 h-7 w-full focus-within:outline-0 md:mr-6 md:ml-12.5 md:h-7.5'
+            className='text-sm-regular md:text-md-regular mr-4 ml-10.5 h-7 w-full tracking-[-0.02em] focus-within:outline-0 md:mr-6 md:ml-12.5 md:h-7.5'
           />
         </div>
       </div>

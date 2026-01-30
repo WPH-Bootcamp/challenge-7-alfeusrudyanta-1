@@ -23,11 +23,11 @@ export const ReviewCard: React.FC<Review> = ({
         />
 
         <div className='flex flex-col'>
-          <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+          <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
             {user.name}
           </span>
 
-          <span className='md:text-md-regular text-sm-regular text-neutral-950'>
+          <span className='md:text-md-regular text-sm-regular tracking-[-0.02em] text-neutral-950'>
             {dayjs(createdAt).format('DD MMMM YYYY, HH:mm')}
           </span>
         </div>
@@ -47,7 +47,7 @@ export const ReviewCard: React.FC<Review> = ({
           ))}
         </div>
 
-        <span className='md:text-md-regular text-sm-regular text-neutral-950'>
+        <span className='md:text-md-regular text-sm-regular tracking-[-0.02em] text-neutral-950'>
           {comment}
         </span>
       </div>

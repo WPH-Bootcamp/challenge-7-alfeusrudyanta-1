@@ -36,7 +36,7 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
             className='size-9 rounded-full object-cover md:size-12'
           />
 
-          <span className='text-md-bold md:text-lg-bold group-hover:text-primary-100 truncate text-wrap text-neutral-950'>
+          <span className='text-md-bold md:text-lg-bold group-hover:text-primary-100 truncate tracking-[-0.02em] text-wrap text-neutral-950 md:tracking-[-0.03em]'>
             {data?.data.name}
           </span>
         </div>
@@ -46,14 +46,14 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
 
       <Link href={'/address'} className='group flex items-center gap-2'>
         <MapPin className='group-hover:text-primary-100 size-6 text-neutral-950' />
-        <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950'>
+        <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950 md:tracking-[-0.03em]'>
           Delivery Address
         </span>
       </Link>
 
       <Link href={'/my-order'} className='group flex items-center gap-2'>
         <FileText className='group-hover:text-primary-100 size-6 text-neutral-900' />
-        <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950'>
+        <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950 md:tracking-[-0.03em]'>
           My Orders
         </span>
       </Link>
@@ -63,7 +63,7 @@ const ProfileSide: React.FC<ProfileSideProps> = ({ isHover = false, ref }) => {
         className='group flex cursor-pointer items-center gap-2'
       >
         <LogOut className='group-hover:text-primary-100 size-6 text-neutral-950' />
-        <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950'>
+        <span className='text-sm-medium md:text-md-medium group-hover:text-primary-100 text-neutral-950 md:tracking-[-0.03em]'>
           Logout
         </span>
       </div>

@@ -50,7 +50,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           <span>{star.toFixed(1)}</span>
         </div>
 
-        <div className='text-sm-regular md:text-md-regular flex items-center text-neutral-950'>
+        <div className='text-sm-regular md:text-md-regular flex items-center tracking-[-0.02em] text-neutral-950'>
           <span>{place}</span>
           <Dot />
           <span>2.4 km</span>

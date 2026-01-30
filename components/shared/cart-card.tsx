@@ -40,7 +40,7 @@ const CartCard: React.FC<CartCardProps> = ({
                 className='size-8 object-cover'
               />
 
-              <span className='text-md-bold md:text-lg-bold text-neutral-950'>
+              <span className='text-md-bold md:text-lg-bold tracking-[-0.02em] text-neutral-950 md:tracking-[-0.03em]'>
                 {restaurant.name}
               </span>
 
@@ -78,11 +78,11 @@ const CartCard: React.FC<CartCardProps> = ({
 
             <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
               <div className='flex flex-col'>
-                <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+                <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
                   Total
                 </span>
 
-                <span className='text-lg-extrabold md:text-xl-extrabold text-neutral-950'>
+                <span className='text-lg-extrabold md:text-xl-extrabold tracking-[-0.02em] text-neutral-950 md:tracking-normal'>
                   Rp{subtotal.toLocaleString('id-ID')}
                 </span>
               </div>

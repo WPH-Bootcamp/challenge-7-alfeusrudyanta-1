@@ -130,7 +130,7 @@ const RestaurantPage = () => {
                 >
                   <span
                     className={cn(
-                      'text-sm-semibold md:text-md-semibold',
+                      'text-sm-semibold md:text-md-semibold tracking-[-0.02em]',
                       filter === type && 'text-primary-100'
                     )}
                   >

@@ -11,7 +11,7 @@ const Help = () => {
         {HELP_LIST.map((value) => (
           <span
             key={value}
-            className='text-neutral-25 hover:text-primary-100 md:text-md-regular text-sm-regular cursor-pointer'
+            className='text-neutral-25 hover:text-primary-100 md:text-md-regular text-sm-regular cursor-pointer tracking-[-0.02em]'
           >
             {value}
           </span>

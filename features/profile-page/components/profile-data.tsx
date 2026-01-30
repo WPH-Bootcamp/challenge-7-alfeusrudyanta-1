@@ -23,31 +23,31 @@ const ProfileData: React.FC<Profile> = ({ name, email, phone, avatar }) => {
       {/* Profile data */}
       <div className='flex flex-col gap-2 md:gap-3'>
         <div className='flex items-center justify-between'>
-          <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
             Name
           </span>
 
-          <span className='text-sm-bold md:text-md-bold text-neutral-950'>
+          <span className='text-sm-bold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
             {name}
           </span>
         </div>
 
         <div className='flex items-center justify-between'>
-          <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
             Email
           </span>
 
-          <span className='text-sm-bold md:text-md-bold text-neutral-950'>
+          <span className='text-sm-bold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
             {email}
           </span>
         </div>
 
         <div className='flex items-center justify-between'>
-          <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
             Phone Number
           </span>
 
-          <span className='text-sm-bold md:text-md-bold text-neutral-950'>
+          <span className='text-sm-bold md:text-md-bold tracking-[-0.02em] text-neutral-950'>
             {phone}
           </span>
         </div>

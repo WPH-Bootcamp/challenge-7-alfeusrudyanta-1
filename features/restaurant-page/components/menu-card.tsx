@@ -120,11 +120,11 @@ export const MenuCart: React.FC<MenuCartProps> = ({
 
       <div className='flex flex-col gap-4 p-3 md:flex-row md:items-center md:justify-between md:p-4'>
         <div className='flex flex-col'>
-          <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
             {foodName}
           </span>
 
-          <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+          <span className='text-md-extrabold md:text-lg-extrabold tracking-[-0.02em] text-neutral-950'>
             Rp{price.toLocaleString('id-ID')}
           </span>
         </div>

@@ -19,16 +19,16 @@ export const DeliveryDetail: React.FC<DeliveryDetailProps> = ({
             className='md:h-8 md:w-8'
           />
 
-          <span className='md:text-lg-extrabold text-md-extrabold text-neutral-950'>
+          <span className='md:text-lg-extrabold text-md-extrabold text-neutral-950 md:tracking-[-0.02em]'>
             Delivery Address
           </span>
         </div>
 
-        <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+        <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03m]'>
           {address}
         </span>
 
-        <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+        <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
           {diplayedPhoneNumber}
         </span>
       </div>

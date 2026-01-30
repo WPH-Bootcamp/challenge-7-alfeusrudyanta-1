@@ -46,13 +46,13 @@ const MyOrderData = () => {
           value={search}
           placeholder='Search'
           onChange={(e) => setSearch(e.currentTarget.value)}
-          className='text-sm-regular md:text-md-regular mr-4 ml-10.5 h-7 w-full focus-within:outline-0 md:mr-6 md:ml-12.5 md:h-7.5'
+          className='text-sm-regular md:text-md-regular mr-4 ml-10.5 h-7 w-full tracking-[-0.02em] focus-within:outline-0 md:mr-6 md:ml-12.5 md:h-7.5'
         />
       </div>
 
       {/* Status Filter */}
       <div className='flex items-center gap-2 overflow-x-auto md:gap-3'>
-        <span className='text-sm-bold md:text-lg-bold text-neutral-950'>
+        <span className='text-sm-bold md:text-lg-bold tracking-[-0.02em] text-neutral-950 md:tracking-[-0.03em]'>
           Status
         </span>
 
@@ -69,7 +69,7 @@ const MyOrderData = () => {
           >
             <span
               className={cn(
-                'text-sm-semibold md:text-md-semibold',
+                'text-sm-semibold md:text-md-semibold tracking-[-0.02em]',
                 status === filter.name && 'text-primary-100'
               )}
             >

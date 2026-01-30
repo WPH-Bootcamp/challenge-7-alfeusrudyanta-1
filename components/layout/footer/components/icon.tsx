@@ -18,7 +18,7 @@ const Icon = () => {
           <span className='display-md-extrabold text-white'>Foody</span>
         </div>
 
-        <span className='text-neutral-25 text-sm-regular md:text-md-regular'>
+        <span className='text-neutral-25 text-sm-regular md:text-md-regular tracking-[-0.02em]'>
           Enjoy homemade flavors & chef’s signature dishes, freshly prepared
           every day. Order online or visit our nearest branch.
         </span>
@@ -26,7 +26,7 @@ const Icon = () => {
 
       {/* Social Media */}
       <div className='flex flex-col gap-5'>
-        <span className='text-sm-bold text-neutral-25 md:text-md-extrabold'>
+        <span className='text-sm-bold text-neutral-25 md:text-md-extrabold tracking-[-0.02em] md:tracking-normal'>
           Follow on Social Media
         </span>
 

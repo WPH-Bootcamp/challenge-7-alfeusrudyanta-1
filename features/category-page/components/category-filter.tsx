@@ -86,11 +86,11 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
     >
       {/* Distance */}
       <div className='flex flex-col gap-2.5'>
-        <span className='md:text-md-extrabold text-md-bold text-neutral-950'>
+        <span className='md:text-md-extrabold text-md-bold tracking-[-0.02em] text-neutral-950 md:tracking-normal'>
           FILTER
         </span>
 
-        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
           Distance
         </span>
 
@@ -98,7 +98,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
           <label
             key={distance.text}
             htmlFor={distance.text}
-            className='text-sm-regular md:text-md-regular flex cursor-pointer items-center gap-2 text-neutral-950'
+            className='text-sm-regular md:text-md-regular flex cursor-pointer items-center gap-2 tracking-[-0.02em] text-neutral-950'
           >
             <Checkbox
               checked={distance.range <= (range ?? -1)}
@@ -118,7 +118,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
       {/* Price */}
       <div className='flex flex-col gap-2.5'>
-        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
           Price
         </span>
 
@@ -127,7 +127,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
           className='flex items-center gap-2 rounded-md border border-neutral-300 px-2 py-1.25 md:p-2'
         >
           <div className='flex size-9.5 shrink-0 items-center justify-center rounded-xs bg-neutral-200 md:bg-neutral-100'>
-            <span className='md:text-md-bold text-sm-semibold text-neutral-950'>
+            <span className='md:text-md-bold text-sm-semibold tracking-[-0.02em] text-neutral-950'>
               Rp
             </span>
           </div>
@@ -139,7 +139,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
             value={localPriceMin}
             onChange={handlePriceMinChange}
             onKeyDown={handlePriceMinKeyDown}
-            className='md:text-md-regular text-sm-regular h-7 w-[calc(100%-4px)] text-neutral-950 outline-0 md:h-7.5'
+            className='md:text-md-regular text-sm-regular h-7 w-[calc(100%-4px)] tracking-[-0.02em] text-neutral-950 outline-0 md:h-7.5'
           />
         </div>
 
@@ -148,7 +148,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
           className='flex items-center gap-2 rounded-md border border-neutral-300 px-2 py-1.25 md:p-2'
         >
           <div className='flex size-9.5 shrink-0 items-center justify-center rounded-xs bg-neutral-200 md:bg-neutral-100'>
-            <span className='md:text-md-bold text-sm-semibold text-neutral-950'>
+            <span className='md:text-md-bold text-sm-semibold tracking-[-0.02em] text-neutral-950'>
               Rp
             </span>
           </div>
@@ -160,7 +160,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
             value={localPriceMax}
             onChange={handlePriceMaxChange}
             onKeyDown={handlePriceMaxKeyDown}
-            className='md:text-md-regular text-sm-regular h-7 w-[calc(100%-4px)] text-neutral-950 outline-0 md:h-7.5'
+            className='md:text-md-regular text-sm-regular h-7 w-[calc(100%-4px)] tracking-[-0.02em] text-neutral-950 outline-0 md:h-7.5'
           />
         </div>
       </div>
@@ -169,7 +169,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
       {/* Rating */}
       <div className='flex flex-col gap-2.5'>
-        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+        <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
           Rating
         </span>
 
@@ -188,7 +188,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
                 disabled={isPending}
               />
 
-              <div className='flex items-center gap-0.5 md:gap-1.25'>
+              <div className='flex items-center gap-0.5 tracking-[-0.02em] md:gap-1.25'>
                 <Star className='size-6 fill-[#FFAB0D] stroke-0' />
                 {starRating}
               </div>

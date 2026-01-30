@@ -78,11 +78,11 @@ export const ItemCartCard: React.FC<CartItem> = ({ menu, id, quantity }) => {
         </div>
 
         <div className='flex flex-col'>
-          <span className='text-sm-medium md:text-md-medium text-neutral-950'>
+          <span className='text-sm-medium md:text-md-medium text-neutral-950 md:tracking-[-0.03em]'>
             {menu.foodName}
           </span>
 
-          <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950'>
+          <span className='text-md-extrabold md:text-lg-extrabold text-neutral-950 md:tracking-[-0.02em]'>
             {menu.price.toLocaleString('id-ID')}
           </span>
         </div>
@@ -99,7 +99,7 @@ export const ItemCartCard: React.FC<CartItem> = ({ menu, id, quantity }) => {
           <Minus className='size-5 md:size-6' />
         </Button>
 
-        <span className='md:text-lg-semibold text-md-semibold text-neutral-950'>
+        <span className='md:text-lg-semibold text-md-semibold tracking-[-0.02em] text-neutral-950'>
           {currentQuantity}
         </span>
 
