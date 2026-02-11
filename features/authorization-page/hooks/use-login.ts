@@ -10,7 +10,6 @@ const useLogin = () => {
     },
     onSuccess: (res) => {
       Cookies.set('token', res.data.token, {
-        sameSite: 'Strict',
         expires: 7,
         path: '/',
       });
